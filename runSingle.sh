@@ -95,7 +95,7 @@ do
 	# Process Results
 	echo "Processing Results"
 	cd ..
-	stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar output/oxygen.json output/chlorine.json output/nicad-functions.xml output/nicad-blocks.xml $mossLink)
+	stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar output/oxygen.json output/chlorine.json output/nicad-blocks.xml output/nicad-functions.xml $mossLink)
 	results="$dirName,$stats"
 	echo $results >> output.csv
 
