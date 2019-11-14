@@ -1,7 +1,16 @@
 #!/bin/bash
 
+# Author: Denton Wood
+# Description: This script runs clone tools and compares outputs of each
+# Tools: PyClone (link)
+# NiCad (link)
+# Moss (link)
+
 FILENAME=$1
 declare -a repositories
+
+# Overwrite output file if it exists
+rm output.csv
 
 # Get the repositories from the file
 num=0
@@ -24,10 +33,16 @@ cd ..
 # Clear out any existing JSON files in PyClone
 rm tools/codeDuplicationParser/*.json
 
+# Activate Python virtual environment
+source tools/codeDuplicationParser/env/bin/activate
+
 # Run the clone tools
 i=0
 while [ $i -lt $num ]
 do
+	# remove existing output
+	rm output/*
+
 	cd tools
 	repoName=${repositories[i]}
 	dirName="${repoName##*/}"
@@ -56,15 +71,15 @@ do
 	# Process NiCad
 	cd NiCad-5.2
 
-	# Functions
-	./nicad5 functions py ../../repos/$dirName
-	cp ../../repos/$dirName\_functions-blind-clones/$dirName\_functions-blind-clones-0.30.xml ../../output
-	mv ../../output/$dirName\_functions-blind-clones-0.30.xml ../../output/nicad-functions.xml
-
 	# Blocks
 	./nicad5 blocks py ../../repos/$dirName
 	cp ../../repos/$dirName\_blocks-blind-clones/$dirName\_blocks-blind-clones-0.30.xml ../../output
 	mv ../../output/$dirName\_blocks-blind-clones-0.30.xml ../../output/nicad-blocks.xml
+
+	# Functions
+	./nicad5 functions py ../../repos/$dirName
+	cp ../../repos/$dirName\_functions-blind-clones/$dirName\_functions-blind-clones-0.30.xml ../../output
+	mv ../../output/$dirName\_functions-blind-clones-0.30.xml ../../output/nicad-functions.xml
 
 	cd ..
 
@@ -74,13 +89,17 @@ do
 	./flatten.sh ../../repos/$dirName
 	echo "Sending to Moss"
 	mossLink=$(./moss -l python ../../repos/$dirName/*.py | tail -n 1)
+	echo $mossLink
 	cd ..
 
 	# Process Results
+	echo "Processing Results"
 	cd ..
-	java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar output/oxygen.json output/chlorine.json output/nicad-functions.xml output/nicad-blocks.xml $mossLink > output.txt
+	stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar output/oxygen.json output/chlorine.json output/nicad-functions.xml output/nicad-blocks.xml $mossLink)
+	results="$dirName,$stats"
+	echo $results >> output.csv
+
 	((i=i+1))
 done
 
-cd ..
 rm -rf ./repos/*

@@ -1,3 +1,5 @@
 repos/
 output/
 tools/
+*.csv
+.idea/

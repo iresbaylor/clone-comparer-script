@@ -1,5 +1,4 @@
 https://github.com/fabric8-analytics/f8a-server-backbone
-https://github.com/fabric8-analytics/f8a-stacks-report
 https://github.com/fabric8-analytics/fabric8-gemini-server
 https://github.com/fabric8-analytics/fabric8-analytics-github-events-monitor
 https://github.com/fabric8-analytics/fabric8-analytics-nvd-toolkit
@@ -8,3 +7,14 @@ https://github.com/fabric8-analytics/stack-analyzer-image
 https://github.com/fabric8-analytics/cvejob
 https://github.com/fabric8-analytics/fabric8-analytics-utils
 https://github.com/fabric8-analytics/fabric8-analytics-version-comparator
+https://github.com/django/django
+https://github.com/pallets/flask
+https://github.com/astropy/astropy
+https://github.com/numpy/numpy
+https://github.com/gitpython-developers/GitPython
+https://github.com/pytest-dev/pytest
+https://github.com/plotly/plotly.py
+https://github.com/docker/docker-py
+https://github.com/Rapptz/discord.py
+https://github.com/binux/pyspider
+https://github.com/kubernetes-client/python
