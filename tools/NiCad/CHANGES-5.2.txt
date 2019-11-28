@@ -1,6 +1,0 @@
-Changes from NiCad 5.1 to 5.2
-
-1. Updated and validated new C plugin to handle C 2018.
-
-2. Corrected handling of empty #else clauses in #ifdef resolver.
-
