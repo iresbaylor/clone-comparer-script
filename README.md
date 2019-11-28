@@ -1,1 +1,25 @@
 # clone-comparer-script
+
+This is a script project written to run multiple code clone detection tools and compare the results to each other. It wraps multiple projects into one script.
+
+## Setup
+
+To run this script, you'll need to do the following:
+
+1. Clone the repository with the submodules:
+
+> git clone --recurse-submodules https://github.com/dentonmwood/clone-comparer.git
+
+2. Install [TxL](https://www.txl.ca/txl-index.html)
+
+3. Download a copy of [NiCad](https://www.txl.ca/txl-nicaddownload.html) and place it under tools/NiCad/
+
+4. Get a copy of the [Moss script](https://theory.stanford.edu/~aiken/moss/), name it moss, and put it under tools/Moss/
+
+## Running the project
+
+1. Assemble a list of URLs for GitHub repositories you want to compare. Drop them in a file (see repositories.txt for an example).
+
+2. Command: ./run.sh [single/double] repository file
+
+3. The results will be under output-single.csv or output-double.csv, depending on which mode you ran.

@@ -1,0 +1,13 @@
+Changes from NiCad 5.0 to 5.1
+
+1. Updated and validated new C# plugin to handle C# Edition 7.
+
+2. Updated #ifdef resolver to be more semantically consistent.
+
+3. Updated #ifdef resolver to better handle C#.
+
+4. Removed erroneous script debug tracing in Extract, MakeHTML and GetSource scripts.
+
+5. Fixed crash on long lines in HTML reporting.
+
+6. Added predefined config files for excluding test files (notests.cfg, notests-report.cfg).
