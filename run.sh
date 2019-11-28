@@ -119,8 +119,8 @@ run_double() {
 		repo1=${repositories[i]}
 		dir1="${repo1##*/}"
 
-		j=0
-		while [ $j -lt $(($i + 1)) ]
+		j=$i
+		while [ $j -lt $num ]
 		do
 			repo2=${repositories[j]}
 			dir2="${repo2##*/}"
