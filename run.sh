@@ -19,6 +19,14 @@
 run_single() {
 	repositories=$1
 	outputFile=$2
+	tempFiles=$3
+
+	# Get temp files
+	oxygenFilename="${tempFiles[0]}"
+	chlorineFilename="${tempFiles[1]}"
+	nicadBlocksFilename="${tempFiles[2]}"
+	nicadFunctionsFilename="${tempFiles[3]}"
+	mossFilename="${tempFiles[4]}"
 
 	i=0
 	while [ $i -lt $num ]
@@ -36,17 +44,17 @@ run_single() {
 		python3 -m cli -a oxygen $repoName
 		jsonFiles=(*.json)
 		oxygenFile="${jsonFiles[0]}"
-		mv $oxygenFile oxygen.json
-		cp oxygen.json ../../output
-		rm oxygen.json
+		mv $oxygenFile $oxygenFilename
+		cp $oxygenFilename ../../output
+		rm $oxygenFilename
 
 		# Chlorine
 		python3 -m cli -a chlorine $repoName
 		jsonFiles=(*.json)
 		chlorineFile="${jsonFiles[0]}"
-		mv $chlorineFile chlorine.json
-		cp chlorine.json ../../output
-		rm chlorine.json
+		mv $chlorineFile $chlorineFilename
+		cp $chlorineFilename ../../output
+		rm $chlorineFilename
 
 		cd ..
 
@@ -63,7 +71,7 @@ run_single() {
 			((i=i+1))
 			continue
 		fi
-		mv ../../output/$dirName\_blocks-blind-clones-0.30.xml ../../output/nicad-blocks.xml
+		mv ../../output/$dirName\_blocks-blind-clones-0.30.xml ../../output/$nicadBlocksFilename
 
 		# Functions
 		./nicad5 functions py ../../repos/$dirName
@@ -75,7 +83,7 @@ run_single() {
 			((i=i+1))
 			continue
 		fi
-		mv ../../output/$dirName\_functions-blind-clones-0.30.xml ../../output/nicad-functions.xml
+		mv ../../output/$dirName\_functions-blind-clones-0.30.xml ../../output/$nicadFunctionsFilename
 
 		cd ..
 
@@ -85,13 +93,13 @@ run_single() {
 		./flatten.sh ../../repos/$dirName
 		echo "Sending to Moss"
 		mossLink=$(./moss -l python ../../repos/$dirName/*.py | tail -n 1)
-		echo $mossLink
-		cd ..
+		echo $mossLink > ../../output/$mossFilename
+
+		cd ../..
 
 		# Process Results
 		echo "Processing Results"
-		cd ..
-		stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar output/oxygen.json output/chlorine.json output/nicad-blocks.xml output/nicad-functions.xml $mossLink)
+		stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar single output/$oxygenFilename output/$chlorineFilename output/$nicadBlocksFilename output/$nicadFunctionsFilename output/$mossFilename)
 		results="$dirName,$stats"
 		echo $results >> $outputFile
 
@@ -112,6 +120,14 @@ run_single() {
 run_double() {
 	repositories=$1
 	outputFile=$2
+	tempFiles=$3
+
+	# Get temp files
+	oxygenFilename="${tempFiles[0]}"
+	chlorineFilename="${tempFiles[1]}"
+	nicadBlocksFilename="${tempFiles[2]}"
+	nicadFunctionsFilename="${tempFiles[3]}"
+	mossFilename="${tempFiles[4]}"
 	
 	i=0
 	while [ $i -lt $num ]
@@ -138,15 +154,15 @@ run_double() {
 			cd tools/codeDuplicationParser
 
 			# Oxygen (can't be run in two-repo mode)
-			touch ../../output/oxygen.json
+			touch ../../output/$oxygenFilename
 
 			# Chlorine
 			python3 -m cli -a chlorine $repo1 $repo2
 			jsonFiles=(*.json)
 			chlorineFile="${jsonFiles[0]}"
-			mv $chlorineFile chlorine.json
-			cp chlorine.json ../../output
-			rm chlorine.json
+			mv $chlorineFile $chlorineFilename
+			cp $chlorineFilename ../../output
+			rm $chlorineFilename
 
 			cd ..
 
@@ -163,7 +179,7 @@ run_double() {
 				((j=j+1))
 				continue
 			fi
-			mv ../../output/$dir1\_blocks-blind-crossclones-0.30.xml ../../output/nicad-blocks.xml
+			mv ../../output/$dir1\_blocks-blind-crossclones-0.30.xml ../../output/$nicadBlocksFilename
 
 			# Functions
 			./nicad5cross functions py ../../repos/$dir1 ../../repos/$dir2
@@ -175,7 +191,7 @@ run_double() {
 				((j=j+1))
 				continue
 			fi
-			mv ../../output/$dir1\_functions-blind-crossclones-0.30.xml ../../output/nicad-functions.xml
+			mv ../../output/$dir1\_functions-blind-crossclones-0.30.xml ../../output/$nicadFunctionsFilename
 
 			cd ..
 
@@ -192,11 +208,13 @@ run_double() {
 			# cd ..
 
 			mossLink="link"
+			echo $mossLink > ../output/$mossFilename
+
+			cd ..
 
 			# Process Results
 			echo "Processing Results"
-			cd ..
-			stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar output/oxygen.json output/chlorine.json output/nicad-blocks.xml output/nicad-functions.xml $mossLink)
+			stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar double output/$oxygenFilename output/$chlorineFilename output/$nicadBlocksFilename output/$nicadFunctionsFilename output/$mossFilename)
 			results="$dir1,$dir2,$stats"
 			echo $results >> $outputFile
 
@@ -227,7 +245,14 @@ fi
 
 declare -a repositories
 
+# Declare output files
 outputFile=output-$mode.csv
+declare -a tempFiles
+tempFiles[0]=oxygen.json
+tempFiles[1]=chlorine.json
+tempFiles[2]=nicad-blocks.xml
+tempFiles[3]=nicad-functions.xml
+tempFiles[4]=moss.txt
 
 # Overwrite output file if it exists
 rm $outputFile
@@ -264,9 +289,9 @@ source tools/codeDuplicationParser/venv/bin/activate
 # Run the clone tools
 if [ $mode == 'single' ]
 then
-	run_single $repositories $outputFile
+	run_single $repositories $outputFile $tempFiles
 else
-	run_double $repositories $outputFile
+	run_double $repositories $outputFile $tempFiles
 fi
 
 # Clean up flattened repositories
