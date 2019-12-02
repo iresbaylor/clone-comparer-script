@@ -59,7 +59,7 @@ run_single() {
 		cd ..
 
 		# Process NiCad
-		cd NiCad-5.2
+		cd NiCad
 
 		# Blocks
 		./nicad5 blocks py ../../repos/$dirName
@@ -167,7 +167,7 @@ run_double() {
 			cd ..
 
 			# Process NiCad
-			cd NiCad-5.2
+			cd NiCad
 
 			# Blocks
 			./nicad5cross blocks py ../../repos/$dir1 ../../repos/$dir2
@@ -243,6 +243,11 @@ then
 	exit 2
 fi
 
+# Build the Maven project
+cd tools/clone-comparer
+mvn clean package
+cd ../..
+
 declare -a repositories
 
 # Declare output files
@@ -271,6 +276,7 @@ do
 done < $repository_file
 
 # Iterate over the repositories
+mkdir repos
 cd repos
 i=0
 while [ $i -lt $num ]
@@ -286,6 +292,9 @@ rm tools/codeDuplicationParser/*.json
 # Activate Python virtual environment
 source tools/codeDuplicationParser/venv/bin/activate
 
+# Create output directory
+mkdir output
+
 # Run the clone tools
 if [ $mode == 'single' ]
 then
@@ -295,4 +304,4 @@ else
 fi
 
 # Clean up flattened repositories
-rm -rf ./repos/*
+rm -rf ./repos

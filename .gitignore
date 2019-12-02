@@ -1,6 +1,6 @@
 repos/
 output/
-tools/NiCad-5.2/
+tools/NiCad/
 tools/Moss/moss
 *.csv
 .idea/
