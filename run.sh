@@ -24,9 +24,10 @@ run_single() {
 	# Get temp files
 	oxygenFilename="${tempFiles[0]}"
 	chlorineFilename="${tempFiles[1]}"
-	nicadBlocksFilename="${tempFiles[2]}"
-	nicadFunctionsFilename="${tempFiles[3]}"
-	mossFilename="${tempFiles[4]}"
+	iodineFilename="${tempFiles[2]}"
+	nicadBlocksFilename="${tempFiles[3]}"
+	nicadFunctionsFilename="${tempFiles[4]}"
+	mossFilename="${tempFiles[5]}"
 
 	i=0
 	while [ $i -lt $num ]
@@ -125,9 +126,10 @@ run_double() {
 	# Get temp files
 	oxygenFilename="${tempFiles[0]}"
 	chlorineFilename="${tempFiles[1]}"
-	nicadBlocksFilename="${tempFiles[2]}"
-	nicadFunctionsFilename="${tempFiles[3]}"
-	mossFilename="${tempFiles[4]}"
+	iodineFilename="${tempFiles[2]}"
+	nicadBlocksFilename="${tempFiles[3]}"
+	nicadFunctionsFilename="${tempFiles[4]}"
+	mossFilename="${tempFiles[5]}"
 	
 	i=0
 	while [ $i -lt $num ]
@@ -160,6 +162,14 @@ run_double() {
 			mv $chlorineFile $chlorineFilename
 			cp $chlorineFilename ../../output
 			rm $chlorineFilename
+
+			# Iodine
+			python3 -m cli -a iodine $repo1 $repo2
+			jsonFiles=(*.json)
+			iodineFile="${jsonFiles[0]}"
+			mv $iodineFile $iodineFilename
+			cp $iodineFilename ../../output
+			rm $iodineFilename
 
 			cd ..
 
@@ -194,7 +204,7 @@ run_double() {
 
 			# Process Results
 			echo "Processing Results"
-			stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pO output/$chlorineFilename -nB output/$nicadBlocksFilename -nF output/$nicadFunctionsFilename)
+			stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pC output/$chlorineFilename -pI output/$iodineFilename -nB output/$nicadBlocksFilename -nF output/$nicadFunctionsFilename)
 			results="$dir1,$dir2,$stats"
 			echo $results >> $outputFile
 
@@ -214,8 +224,8 @@ then
 	exit 1
 fi
 
-repository_file=$1
-mode=$2
+mode=$1
+repository_file=$2
 
 if [ $mode != "single" ] && [ $mode != "double" ]
 then
@@ -231,13 +241,14 @@ cd ../..
 declare -a repositories
 
 # Declare output files
-outputFile=output-$mode.csv
+outputFile=output-$mode-`date +%s`.csv
 declare -a tempFiles
 tempFiles[0]=oxygen.json
 tempFiles[1]=chlorine.json
-tempFiles[2]=nicad-blocks.xml
-tempFiles[3]=nicad-functions.xml
-tempFiles[4]=moss.txt
+tempFiles[2]=iodine.json
+tempFiles[3]=nicad-blocks.xml
+tempFiles[4]=nicad-functions.xml
+tempFiles[5]=moss.txt
 
 # Get the repositories from the file
 num=0
@@ -270,13 +281,6 @@ source tools/codeDuplicationParser/$virtualenv/bin/activate
 # Create output directory
 mkdir output
 
-# Overwrite output file if it exists
-rm $outputFile
-
-# Print header line
-header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -h)
-
-
 # Run the clone tools
 if [ $mode == 'single' ]
 then
@@ -285,7 +289,7 @@ then
 	echo $headerLine > $outputFile
 	run_single $repositories $outputFile $tempFiles
 else
-	header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M h pC nB nF)
+	header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M h pC pI nB nF)
 	headerLine="Results,$header"
 	echo $headerLine > $outputFile
 	run_double $repositories $outputFile $tempFiles

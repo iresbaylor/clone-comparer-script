@@ -1,0 +1,5 @@
+https://github.com/HaoZou39/Metaimage
+https://github.com/geocarpentry/2014-01-21-erdc
+https://github.com/brwagner/quarri
+https://github.com/spatala/GB_Lammps
+https://github.com/baran0119/softmax_function

@@ -1,0 +1,5 @@
+https://github.com/UnchainedCommunity/Jawhar
+https://github.com/senocak/Todo-App-with-Flask-ORM-SqlAlchemy
+https://github.com/slasse/docker_subtitles
+https://github.com/miguelsaldivar/trackpy
+https://github.com/Deech08/dk_tilted_model
