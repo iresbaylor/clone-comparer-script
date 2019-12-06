@@ -1,6 +1,6 @@
 [submodule "tools/clone-comparer"]
 	path = tools/clone-comparer
-	url = git@github.com:iresbaylor/clone-comparer.git
+	url = https://github.com:iresbaylor/clone-comparer.git
 [submodule "tools/codeDuplicationParser"]
 	path = tools/codeDuplicationParser
-	url = git@github.com:iresbaylor/codeDuplicationParser.git
+	url = https://github.com:iresbaylor/codeDuplicationParser.git
