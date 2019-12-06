@@ -8,7 +8,7 @@ To run this script, you'll need to do the following:
 
 1. Clone the repository with the submodules:
 
-> git clone --recurse-submodules https://github.com/dentonmwood/clone-comparer.git
+> git clone --recurse-submodules https://github.com/iresbaylor/clone-comparer.git
 
 2. Install [TxL](https://www.txl.ca/txl-index.html). You'll need to do it as the superuser or NiCad won't be able to build correctly.
 
