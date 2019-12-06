@@ -99,7 +99,7 @@ run_single() {
 
 		# Process Results
 		echo "Processing Results"
-		stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar single output/$oxygenFilename output/$chlorineFilename output/$nicadBlocksFilename output/$nicadFunctionsFilename output/$mossFilename)
+		stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M s -pO output/$oxygenFilename -pC output/$chlorineFilename -nB output/$nicadBlocksFilename -nF output/$nicadFunctionsFilename -m output/$mossFilename)
 		results="$dirName,$stats"
 		echo $results >> $outputFile
 
@@ -153,9 +153,6 @@ run_double() {
 			# Process PyClone
 			cd tools/codeDuplicationParser
 
-			# Oxygen (can't be run in two-repo mode)
-			touch ../../output/$oxygenFilename
-
 			# Chlorine
 			python3 -m cli -a chlorine $repo1 $repo2
 			jsonFiles=(*.json)
@@ -193,28 +190,11 @@ run_double() {
 			fi
 			mv ../../output/$dir1\_functions-blind-crossclones-0.30.xml ../../output/$nicadFunctionsFilename
 
-			cd ..
-
-			# Process Moss
-			# Moss is going to be difficult - handles projects as one big file instead of separate files
-
-			# cd Moss
-			# echo "Flattening repository"
-			# ./flatten.sh ../../repos/$dir1
-			# ./flatten.sh ../../repos/$dir2
-			# echo "Sending to Moss"
-			# mossLink=$(./moss -l python ../../repos/$dir1/*.py | tail -n 1)
-			# echo $mossLink
-			# cd ..
-
-			mossLink="link"
-			echo $mossLink > ../output/$mossFilename
-
-			cd ..
+			cd ../..
 
 			# Process Results
 			echo "Processing Results"
-			stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar double output/$oxygenFilename output/$chlorineFilename output/$nicadBlocksFilename output/$nicadFunctionsFilename output/$mossFilename)
+			stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pO output/$chlorineFilename -nB output/$nicadBlocksFilename -nF output/$nicadFunctionsFilename)
 			results="$dir1,$dir2,$stats"
 			echo $results >> $outputFile
 
@@ -259,14 +239,6 @@ tempFiles[2]=nicad-blocks.xml
 tempFiles[3]=nicad-functions.xml
 tempFiles[4]=moss.txt
 
-# Overwrite output file if it exists
-rm $outputFile
-
-# Print new header line
-header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar header)
-headerLine="Results,$header"
-echo $headerLine > $outputFile
-
 # Get the repositories from the file
 num=0
 while read line
@@ -289,17 +261,33 @@ cd ..
 # Clear out any existing JSON files in PyClone
 rm tools/codeDuplicationParser/*.json
 
+#virtualenv=venv
+virtualenv=venv_pypy
+
 # Activate Python virtual environment
-source tools/codeDuplicationParser/venv/bin/activate
+source tools/codeDuplicationParser/$virtualenv/bin/activate
 
 # Create output directory
 mkdir output
 
+# Overwrite output file if it exists
+rm $outputFile
+
+# Print header line
+header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -h)
+
+
 # Run the clone tools
 if [ $mode == 'single' ]
 then
+	header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M h pO pC nB nF m)
+	headerLine="Results,$header"
+	echo $headerLine > $outputFile
 	run_single $repositories $outputFile $tempFiles
 else
+	header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M h pC nB nF)
+	headerLine="Results,$header"
+	echo $headerLine > $outputFile
 	run_double $repositories $outputFile $tempFiles
 fi
 
