@@ -220,7 +220,7 @@ run_double() {
 # Handle arguments
 if [ $# -ne 2 ]
 then
-	echo "Usage: <repository URL file> <mode (single/double)>"
+	echo "Usage: <mode (single/double)> <repository URL file>"
 	exit 1
 fi
 
