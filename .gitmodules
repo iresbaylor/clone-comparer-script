@@ -3,4 +3,4 @@
 	url = https://github.com/iresbaylor/clone-comparer
 [submodule "tools/codeDuplicationParser"]
 	path = tools/codeDuplicationParser
-	url = https://github.com:iresbaylor/codeDuplicationParser.git
+	url = https://github.com/iresbaylor/codeDuplicationParser
