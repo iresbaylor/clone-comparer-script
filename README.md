@@ -22,6 +22,16 @@ To run this script, you'll need to do the following:
 
 1. Assemble a list of URLs for GitHub repositories you want to compare. Drop them in a file (see repositories.txt for an example).
 
-2. Command: ./run.sh <mode (single/double) <repository_file>
+2. Source the build environment:
 
-3. The results will be under output-single.csv or output-double.csv, depending on which mode you ran.
+```
+source tools/codeDuplicationParser/venv/bin/activate
+```
+
+3. Run the comparer: 
+
+```
+./run.sh <mode (single/double) <repository_file>
+```
+
+4. The results will be under output-single.csv or output-double.csv, depending on which mode you ran.
