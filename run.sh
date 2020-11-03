@@ -42,7 +42,7 @@ run_single() {
 		cd tools/codeDuplicationParser
 
 		# Oxygen
-		python3 -m cli -a oxygen $repoName
+		$py_bin/pypy3 -m cli -a oxygen $repoName
 		if [ $? -ne 0 ]
 		then
 			echo "PyClone (Oxygen) - unable to process" >> $outputFile
@@ -58,7 +58,7 @@ run_single() {
 		rm $oxygenFilename
 
 		# Chlorine
-		python3 -m cli -a chlorine $repoName
+		$py_bin/pypy3 -m cli -a chlorine $repoName
 		if [ $? -ne 0 ]
 		then
 			echo "PyClone (Chlorine) - unable to process" >> $outputFile
@@ -79,8 +79,7 @@ run_single() {
 		cd NiCad
 
 		# Blocks
-		./nicad5 blocks py ../../repos/$dirName
-		cp ../../repos/$dirName\_blocks-blind-clones/$dirName\_blocks-blind-clones-0.30.xml ../../$TOOL_OUTPUT
+		./nicad6 blocks py ../../repos/$dirName
 		# Stop if error
 		if [[ $? -ne 0 ]]
 		then
@@ -89,11 +88,11 @@ run_single() {
 			cd ../..
 			continue
 		fi
+		cp ../../repos/$dirName\_blocks-blind-clones/$dirName\_blocks-blind-clones-0.30.xml ../../$TOOL_OUTPUT
 		mv ../../$TOOL_OUTPUT/$dirName\_blocks-blind-clones-0.30.xml ../../$TOOL_OUTPUT/$nicadBlocksFilename
 
 		# Functions
-		./nicad5 functions py ../../repos/$dirName
-		cp ../../repos/$dirName\_functions-blind-clones/$dirName\_functions-blind-clones-0.30.xml ../../$TOOL_OUTPUT
+		./nicad6 functions py ../../repos/$dirName
 		# Stop if error
 		if [[ $? -ne 0 ]] 
 		then
@@ -102,6 +101,7 @@ run_single() {
 			cd ../..
 			continue
 		fi
+		cp ../../repos/$dirName\_functions-blind-clones/$dirName\_functions-blind-clones-0.30.xml ../../$TOOL_OUTPUT
 		mv ../../$TOOL_OUTPUT/$dirName\_functions-blind-clones-0.30.xml ../../$TOOL_OUTPUT/$nicadFunctionsFilename
 
 		cd ..
@@ -174,7 +174,7 @@ run_double() {
 			cd tools/codeDuplicationParser
 
 			# Chlorine
-			python3 -m cli -a chlorine $repo1 $repo2
+			$py_bin/pypy3 -m cli -a chlorine $repo1 $repo2
 			if [ $? -ne 0 ]
 			then
 				echo "PyClone (Chlorine) - unable to process" >> $outputFile
@@ -190,7 +190,7 @@ run_double() {
 			rm $chlorineFilename
 
 			# Iodine
-			python3 -m cli -a iodine $repo1 $repo2
+			$py_bin/pypy3 -m cli -a iodine $repo1 $repo2
 			if [ $? -ne 0 ]
 			then
 				echo "PyClone (Iodine) - unable to process" >> $outputFile
@@ -211,8 +211,7 @@ run_double() {
 			cd NiCad
 
 			# Blocks
-			./nicad5cross blocks py ../../repos/$dir1 ../../repos/$dir2
-			cp ../../repos/$dir1\_blocks-blind-crossclones/$dir1\_blocks-blind-crossclones-0.30.xml ../../$TOOL_OUTPUT
+			./nicad6cross blocks py ../../repos/$dir1 ../../repos/$dir2
 			# Stop if error
 			if [[ $? -ne 0 ]]
 			then
@@ -221,11 +220,11 @@ run_double() {
 				cd ../..
 				continue
 			fi
+			cp ../../repos/$dir1\_blocks-blind-crossclones/$dir1\_blocks-blind-crossclones-0.30.xml ../../$TOOL_OUTPUT
 			mv ../../$TOOL_OUTPUT/$dir1\_blocks-blind-crossclones-0.30.xml ../../$TOOL_OUTPUT/$nicadBlocksFilename
 
 			# Functions
-			./nicad5cross functions py ../../repos/$dir1 ../../repos/$dir2
-			cp ../../repos/$dir1\_functions-blind-crossclones/$dir1\_functions-blind-crossclones-0.30.xml ../../$TOOL_OUTPUT
+			./nicad6cross functions py ../../repos/$dir1 ../../repos/$dir2
 			# Stop if error
 			if [[ $? -ne 0 ]] 
 			then
@@ -234,6 +233,7 @@ run_double() {
 				cd ../..
 				continue
 			fi
+			cp ../../repos/$dir1\_functions-blind-crossclones/$dir1\_functions-blind-crossclones-0.30.xml ../../$TOOL_OUTPUT
 			mv ../../$TOOL_OUTPUT/$dir1\_functions-blind-crossclones-0.30.xml ../../$TOOL_OUTPUT/$nicadFunctionsFilename
 
 			cd ../..
@@ -324,6 +324,7 @@ rm -f tools/codeDuplicationParser/*.json
 
 virtualenv=venv
 #virtualenv=venv_pypy
+py_bin=$(pwd)/tools/codeDuplicationParser/$virtualenv/bin
 
 # Activate Python virtual environment
 source tools/codeDuplicationParser/$virtualenv/bin/activate

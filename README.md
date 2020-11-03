@@ -18,7 +18,17 @@ git clone --recurse-submodules https://github.com/iresbaylor/clone-comparer.git
 
 4. Get a copy of the [Moss script](https://theory.stanford.edu/~aiken/moss/), name it moss, and put it under tools/Moss/
 
-5. Run init.sh to create the Python virtual environment.
+5. As instructed in the Moss documentation, retrieve a user ID and update the $userId parameter in the moss script.
+
+6. Install [PyPy](https://www.pypy.org/) for Python 3. Make sure the pypy executable is in your path.
+
+7. Run init.sh to create the Python virtual environment.
+
+You may get an error when installing psycopg2 about needing to install a PostgreSQL package. You'll need to find the appropriate package for your operating system. On Ubuntu, run:
+
+```
+sudo apt-get install libpq-dev
+```
 
 ## Running the project
 
