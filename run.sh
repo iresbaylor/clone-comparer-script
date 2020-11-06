@@ -29,20 +29,31 @@ run_single() {
 	nicadFunctionsFilename="${tempFiles[4]}"
 	mossFilename="${tempFiles[5]}"
 
+	header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M h pO pC nB nF m)
+	headerLine="Results,$header,OXYGEN Time,CHLORINE Time,NICAD_BLOCKS Time,NICAD_FUNCTIONS Time"
+	echo $headerLine > $outputFile
+
 	i=0
 	while [ $i -lt $num ]
 	do
 		# remove existing output
-		rm -f output/*
+		rm -f $TOOL_OUTPUT/*
 
 		repoName=${repositories[i]}
 		dirName="${repoName##*/}"
+
+		# Declare timestamp array & index
+		declare -a timestamps
+		t=0
 		
 		# Process PyClone
 		cd tools/codeDuplicationParser
 
 		# Oxygen
+		start_time=$(date +%s)
 		$py_bin/pypy3 -m cli -a oxygen $repoName
+		exit_code=$?
+		end_time=$(date +%s)
 		if [ $? -ne 0 ]
 		then
 			echo "PyClone (Oxygen) - unable to process" >> $outputFile
@@ -50,6 +61,8 @@ run_single() {
 			cd ../..
 			continue
 		fi
+		timestamps[t]=$(($end_time-$start_time))
+		((t=t+1))
 
 		jsonFiles=(*.json)
 		oxygenFile="${jsonFiles[0]}"
@@ -58,14 +71,19 @@ run_single() {
 		rm $oxygenFilename
 
 		# Chlorine
+		start_time=$(date +%s)
 		$py_bin/pypy3 -m cli -a chlorine $repoName
-		if [ $? -ne 0 ]
+		exit_code=$?
+		end_time=$(date +%s)
+		if [ $exit_code -ne 0 ]
 		then
 			echo "PyClone (Chlorine) - unable to process" >> $outputFile
 			((i=i+1))
 			cd ../..
 			continue
 		fi
+		timestamps[t]=$(($end_time-$start_time))
+		((t=t+1))
 
 		jsonFiles=(*.json)
 		chlorineFile="${jsonFiles[0]}"
@@ -79,9 +97,11 @@ run_single() {
 		cd NiCad
 
 		# Blocks
+		start_time=$(date +%s)
 		./nicad6 blocks py ../../repos/$dirName
-		# Stop if error
-		if [[ $? -ne 0 ]]
+		exit_code=$?
+		end_time=$(date +%s)
+		if [[ $exit_code -ne 0 ]]
 		then
 			echo "NiCad Blocks - unable to process" >> $outputFile
 			((i=i+1))
@@ -90,10 +110,14 @@ run_single() {
 		fi
 		cp ../../repos/$dirName\_blocks-blind-clones/$dirName\_blocks-blind-clones-0.30.xml ../../$TOOL_OUTPUT
 		mv ../../$TOOL_OUTPUT/$dirName\_blocks-blind-clones-0.30.xml ../../$TOOL_OUTPUT/$nicadBlocksFilename
+		timestamps[t]=$(($end_time-$start_time))
+		((t=t+1))
 
 		# Functions
+		start_time=$(date +%s)
 		./nicad6 functions py ../../repos/$dirName
-		# Stop if error
+		exit_code=$?
+		end_time=$(date +%s)
 		if [[ $? -ne 0 ]] 
 		then
 			echo "NiCad Functions - unable to process" >> $outputFile
@@ -103,6 +127,8 @@ run_single() {
 		fi
 		cp ../../repos/$dirName\_functions-blind-clones/$dirName\_functions-blind-clones-0.30.xml ../../$TOOL_OUTPUT
 		mv ../../$TOOL_OUTPUT/$dirName\_functions-blind-clones-0.30.xml ../../$TOOL_OUTPUT/$nicadFunctionsFilename
+		timestamps[t]=$(($end_time-$start_time))
+		((t=t+1))
 
 		cd ..
 
@@ -119,7 +145,7 @@ run_single() {
 		# Process Results
 		echo "Processing Results"
 		stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M s -pO $TOOL_OUTPUT/$oxygenFilename -pC $TOOL_OUTPUT/$chlorineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename -m $TOOL_OUTPUT/$mossFilename)
-		results="$dirName,$stats"
+		results="$dirName,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]},${timestamps[3]}"
 		echo $results >> $outputFile
 
 		((i=i+1))
@@ -148,6 +174,10 @@ run_double() {
 	nicadBlocksFilename="${tempFiles[3]}"
 	nicadFunctionsFilename="${tempFiles[4]}"
 	mossFilename="${tempFiles[5]}"
+
+	header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M h pC pI nB nF)
+	headerLine="Results,$header,CHLORINE Time,IODINE Time,NICAD_BLOCKS Time,NICAD_FUNCTIONS Time"
+	echo $headerLine > $outputFile
 	
 	i=0
 	while [ $i -lt $num ]
@@ -168,20 +198,32 @@ run_double() {
 			fi
 
 			# remove existing output
+			rm -f $TOOL_OUTPUT/*
+
+			# Declare timestamp array & index
+			declare -a timestamps
+			t=0
+
+			# remove existing output
 			rm output/*
 
 			# Process PyClone
 			cd tools/codeDuplicationParser
 
 			# Chlorine
+			start_time=$(date +%s)
 			$py_bin/pypy3 -m cli -a chlorine $repo1 $repo2
-			if [ $? -ne 0 ]
+			exit_code=$?
+			end_time=$(date +%s)
+			if [ $exit_code -ne 0 ]
 			then
 				echo "PyClone (Chlorine) - unable to process" >> $outputFile
 				((j=j+1))
 				cd ../..
 				continue
 			fi
+			timestamps[t]=$(($end_time-$start_time))
+			((t=t+1))
 
 			jsonFiles=(*.json)
 			chlorineFile="${jsonFiles[0]}"
@@ -241,7 +283,7 @@ run_double() {
 			# Process Results
 			echo "Processing Results"
 			stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pC $TOOL_OUTPUT/$chlorineFilename -pI $TOOL_OUTPUT/$iodineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename)
-			results="$dir1,$dir2,$stats"
+			results="$dir1,$dir2,$stats,$timestamps"
 			echo $results >> $outputFile
 
 			((j=j+1))
@@ -336,14 +378,8 @@ mkdir -p $TOOL_OUTPUT
 # Run the clone tools
 if [ $mode == 'single' ]
 then
-	header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M h pO pC nB nF m)
-	headerLine="Results,$header"
-	echo $headerLine > $outputFile
 	run_single $repositories $outputFile $tempFiles
 else
-	header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M h pC pI nB nF)
-	headerLine="Results,$header"
-	echo $headerLine > $outputFile
 	run_double $repositories $outputFile $tempFiles
 fi
 

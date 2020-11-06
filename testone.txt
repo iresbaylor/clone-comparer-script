@@ -1,1 +1,1 @@
-https://github.com/pallets/flask
+https://github.com/fabric8-analytics/nvdlib
