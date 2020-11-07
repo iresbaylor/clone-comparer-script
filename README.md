@@ -48,4 +48,4 @@ source tools/codeDuplicationParser/venv/bin/activate
 ./run.sh <mode (single/double) <repository_file>
 ```
 
-4. The results will be under output-single-<timestamp>.csv or output-double-<timestamp>.csv, depending on which mode you ran.
+4. The results will be under output-single-\<timestamp\>.csv or output-double-\<timestamp\>.csv, depending on which mode you ran.
