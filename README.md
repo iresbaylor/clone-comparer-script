@@ -1,6 +1,6 @@
 # clone-comparer-script
 
-This is a script project written to run multiple code clone detection tools and compare the results to each other. It wraps multiple projects into one script.
+This is a script project written to run multiple code clone detection tools and compare the results to each other. It wraps multiple projects into one script. The full script has only been tested on Ubuntu & RHEL Linux but will likely run on Mac as well. For Windows, you might try Cygwin.
 
 ## Setup
 
