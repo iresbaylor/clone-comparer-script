@@ -50,10 +50,10 @@ run_single() {
 		cd tools/codeDuplicationParser
 
 		# Oxygen
-		start_time=$(date +%s)
+		start_time=$(date +%s.%6N)
 		$py_bin/pypy3 -m cli -a oxygen $repoName
 		exit_code=$?
-		end_time=$(date +%s)
+		end_time=$(date +%s.%6N)
 		if [ $? -ne 0 ]
 		then
 			echo "PyClone (Oxygen) - unable to process" >> $outputFile
@@ -61,20 +61,20 @@ run_single() {
 			cd ../..
 			continue
 		fi
-		timestamps[t]=$(($end_time-$start_time))
+		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
 		((t=t+1))
 
 		jsonFiles=(*.json)
 		oxygenFile="${jsonFiles[0]}"
 		mv $oxygenFile $oxygenFilename
-		cp $oxygenFilename ../../$TOOL_OUTPUT
+		cp $oxygenFilename $TOOL_OUTPUT
 		rm $oxygenFilename
 
 		# Chlorine
-		start_time=$(date +%s)
+		start_time=$(date +%s.%6N)
 		$py_bin/pypy3 -m cli -a chlorine $repoName
 		exit_code=$?
-		end_time=$(date +%s)
+		end_time=$(date +%s.%6N)
 		if [ $exit_code -ne 0 ]
 		then
 			echo "PyClone (Chlorine) - unable to process" >> $outputFile
@@ -82,13 +82,13 @@ run_single() {
 			cd ../..
 			continue
 		fi
-		timestamps[t]=$(($end_time-$start_time))
+		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
 		((t=t+1))
 
 		jsonFiles=(*.json)
 		chlorineFile="${jsonFiles[0]}"
 		mv $chlorineFile $chlorineFilename
-		cp $chlorineFilename ../../$TOOL_OUTPUT
+		cp $chlorineFilename $TOOL_OUTPUT
 		rm $chlorineFilename
 
 		cd ..
@@ -97,10 +97,10 @@ run_single() {
 		cd NiCad
 
 		# Blocks
-		start_time=$(date +%s)
+		start_time=$(date +%s.%6N)
 		./nicad6 blocks py ../../repos/$dirName
 		exit_code=$?
-		end_time=$(date +%s)
+		end_time=$(date +%s.%6N)
 		if [[ $exit_code -ne 0 ]]
 		then
 			echo "NiCad Blocks - unable to process" >> $outputFile
@@ -108,16 +108,16 @@ run_single() {
 			cd ../..
 			continue
 		fi
-		cp ../../repos/$dirName\_blocks-blind-clones/$dirName\_blocks-blind-clones-0.30.xml ../../$TOOL_OUTPUT
-		mv ../../$TOOL_OUTPUT/$dirName\_blocks-blind-clones-0.30.xml ../../$TOOL_OUTPUT/$nicadBlocksFilename
-		timestamps[t]=$(($end_time-$start_time))
+		cp ../../repos/$dirName\_blocks-blind-clones/$dirName\_blocks-blind-clones-0.30.xml $TOOL_OUTPUT
+		mv $TOOL_OUTPUT/$dirName\_blocks-blind-clones-0.30.xml $TOOL_OUTPUT/$nicadBlocksFilename
+		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
 		((t=t+1))
 
 		# Functions
-		start_time=$(date +%s)
+		start_time=$(date +%s.%6N)
 		./nicad6 functions py ../../repos/$dirName
 		exit_code=$?
-		end_time=$(date +%s)
+		end_time=$(date +%s.%6N)
 		if [[ $? -ne 0 ]] 
 		then
 			echo "NiCad Functions - unable to process" >> $outputFile
@@ -125,9 +125,9 @@ run_single() {
 			cd ../..
 			continue
 		fi
-		cp ../../repos/$dirName\_functions-blind-clones/$dirName\_functions-blind-clones-0.30.xml ../../$TOOL_OUTPUT
-		mv ../../$TOOL_OUTPUT/$dirName\_functions-blind-clones-0.30.xml ../../$TOOL_OUTPUT/$nicadFunctionsFilename
-		timestamps[t]=$(($end_time-$start_time))
+		cp ../../repos/$dirName\_functions-blind-clones/$dirName\_functions-blind-clones-0.30.xml $TOOL_OUTPUT
+		mv $TOOL_OUTPUT/$dirName\_functions-blind-clones-0.30.xml $TOOL_OUTPUT/$nicadFunctionsFilename
+		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
 		((t=t+1))
 
 		cd ..
@@ -138,7 +138,7 @@ run_single() {
 		./flatten.sh ../../repos/$dirName
 		echo "Sending to Moss"
 		mossLink=$(./moss -l python ../../repos/$dirName/*.py | tail -n 1)
-		echo $mossLink > ../../$TOOL_OUTPUT/$mossFilename
+		echo $mossLink > $TOOL_OUTPUT/$mossFilename
 
 		cd ../..
 
@@ -147,6 +147,7 @@ run_single() {
 		stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M s -pO $TOOL_OUTPUT/$oxygenFilename -pC $TOOL_OUTPUT/$chlorineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename -m $TOOL_OUTPUT/$mossFilename)
 		results="$dirName,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]},${timestamps[3]}"
 		echo $results >> $outputFile
+		echo "Results Processed"
 
 		((i=i+1))
 	done
@@ -204,17 +205,14 @@ run_double() {
 			declare -a timestamps
 			t=0
 
-			# remove existing output
-			rm output/*
-
 			# Process PyClone
 			cd tools/codeDuplicationParser
 
 			# Chlorine
-			start_time=$(date +%s)
+			start_time=$(date +%s.%6N)
 			$py_bin/pypy3 -m cli -a chlorine $repo1 $repo2
 			exit_code=$?
-			end_time=$(date +%s)
+			end_time=$(date +%s.%6N)
 			if [ $exit_code -ne 0 ]
 			then
 				echo "PyClone (Chlorine) - unable to process" >> $outputFile
@@ -222,29 +220,34 @@ run_double() {
 				cd ../..
 				continue
 			fi
-			timestamps[t]=$(($end_time-$start_time))
+			timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
 			((t=t+1))
 
 			jsonFiles=(*.json)
 			chlorineFile="${jsonFiles[0]}"
 			mv $chlorineFile $chlorineFilename
-			cp $chlorineFilename ../../$TOOL_OUTPUT
+			cp $chlorineFilename $TOOL_OUTPUT
 			rm $chlorineFilename
 
 			# Iodine
+			start_time=$(date +%s.%6N)
 			$py_bin/pypy3 -m cli -a iodine $repo1 $repo2
-			if [ $? -ne 0 ]
+			exit_code=$?
+			end_time=$(date +%s.%6N)
+			if [ $exit_code -ne 0 ]
 			then
 				echo "PyClone (Iodine) - unable to process" >> $outputFile
 				((j=j+1))
 				cd ../..
 				continue
 			fi
+			timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+			((t=t+1))
 
 			jsonFiles=(*.json)
 			iodineFile="${jsonFiles[0]}"
 			mv $iodineFile $iodineFilename
-			cp $iodineFilename ../../$TOOL_OUTPUT
+			cp $iodineFilename $TOOL_OUTPUT
 			rm $iodineFilename
 
 			cd ..
@@ -253,38 +256,49 @@ run_double() {
 			cd NiCad
 
 			# Blocks
+			start_time=$(date +%s.%6N)
 			./nicad6cross blocks py ../../repos/$dir1 ../../repos/$dir2
-			# Stop if error
-			if [[ $? -ne 0 ]]
+			exit_code=$?
+			end_time=$(date +%s.%6N)
+			if [ $exit_code -ne 0 ]
 			then
 				echo "NiCad Blocks - unable to process" >> $outputFile
 				((j=j+1))
 				cd ../..
 				continue
 			fi
-			cp ../../repos/$dir1\_blocks-blind-crossclones/$dir1\_blocks-blind-crossclones-0.30.xml ../../$TOOL_OUTPUT
-			mv ../../$TOOL_OUTPUT/$dir1\_blocks-blind-crossclones-0.30.xml ../../$TOOL_OUTPUT/$nicadBlocksFilename
+			timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+			((t=t+1))
+
+			cp ../../repos/$dir1\_blocks-blind-crossclones/$dir1\_blocks-blind-crossclones-0.30.xml $TOOL_OUTPUT
+			mv $TOOL_OUTPUT/$dir1\_blocks-blind-crossclones-0.30.xml $TOOL_OUTPUT/$nicadBlocksFilename
 
 			# Functions
+			start_time=$(date +%s.%6N)
 			./nicad6cross functions py ../../repos/$dir1 ../../repos/$dir2
-			# Stop if error
-			if [[ $? -ne 0 ]] 
+			exit_code=$?
+			end_time=$(date +%s.%6N)
+			if [ $exit_code -ne 0 ]
 			then
 				echo "NiCad Functions - unable to process" >> $outputFile
 				((j=j+1))
 				cd ../..
 				continue
 			fi
-			cp ../../repos/$dir1\_functions-blind-crossclones/$dir1\_functions-blind-crossclones-0.30.xml ../../$TOOL_OUTPUT
-			mv ../../$TOOL_OUTPUT/$dir1\_functions-blind-crossclones-0.30.xml ../../$TOOL_OUTPUT/$nicadFunctionsFilename
+			timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+			((t=t+1))
+
+			cp ../../repos/$dir1\_functions-blind-crossclones/$dir1\_functions-blind-crossclones-0.30.xml $TOOL_OUTPUT
+			mv $TOOL_OUTPUT/$dir1\_functions-blind-crossclones-0.30.xml $TOOL_OUTPUT/$nicadFunctionsFilename
 
 			cd ../..
 
 			# Process Results
 			echo "Processing Results"
 			stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pC $TOOL_OUTPUT/$chlorineFilename -pI $TOOL_OUTPUT/$iodineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename)
-			results="$dir1,$dir2,$stats,$timestamps"
+			results="$dir1,$dir2,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]},${timestamps[3]}"
 			echo $results >> $outputFile
+			echo "Results Processed"
 
 			((j=j+1))
 		done
@@ -318,8 +332,8 @@ then
 fi
 
 # Set output directories
-OUTPUT=output
-TOOL_OUTPUT=toolOutput
+OUTPUT="$(pwd)/output"
+TOOL_OUTPUT="$(pwd)/toolOutput"
 
 # Build the Maven project
 cd tools/clone-comparer
@@ -365,8 +379,7 @@ cd ..
 rm -f tools/codeDuplicationParser/*.json
 
 virtualenv=venv
-#virtualenv=venv_pypy
-py_bin=$(pwd)/tools/codeDuplicationParser/$virtualenv/bin
+py_bin="$(pwd)/tools/codeDuplicationParser/$virtualenv/bin"
 
 # Activate Python virtual environment
 source tools/codeDuplicationParser/$virtualenv/bin/activate
