@@ -1,12 +1,12 @@
 # clone-comparer-script
 
-This is a script project written to run multiple code clone detection tools and compare the results to each other. It wraps multiple projects into one script.
+This is a script project written to run multiple code clone detection tools and compare the results to each other. It wraps multiple projects into one script. The full script has only been tested on Ubuntu & RHEL Linux but will likely run on Mac as well. For Windows, you might try Cygwin.
 
 ## Setup
 
 To run this script, you'll need to do the following:
 
-1. Clone the repository with the submodules:
+1. Clone the repository with the submodules. This will install both Cyclone and the comparer tool.
 
 ```
 git clone --recurse-submodules https://github.com/iresbaylor/clone-comparer.git
@@ -30,6 +30,8 @@ You may get an error when installing psycopg2 about needing to install a Postgre
 sudo apt-get install libpq-dev
 ```
 
+8. Install [Maven](https://maven.apache.org/download.cgi) and [Java 15](https://jdk.java.net/15/) to run the comparer tool. Make sure both executables are in your path.
+
 ## Running the project
 
 1. Assemble a list of URLs for GitHub repositories you want to compare. Drop them in a file (see repositories.txt for an example).
@@ -46,4 +48,4 @@ source tools/codeDuplicationParser/venv/bin/activate
 ./run.sh <mode (single/double) <repository_file>
 ```
 
-4. The results will be under output-single.csv or output-double.csv, depending on which mode you ran.
+4. The results will be under output-single-\<timestamp\>.csv or output-double-\<timestamp\>.csv, depending on which mode you ran.
