@@ -145,7 +145,7 @@ run_single() {
 		# Process Results
 		echo "Processing Results"
 		stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M s -pO $TOOL_OUTPUT/$oxygenFilename -pC $TOOL_OUTPUT/$chlorineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename -m $TOOL_OUTPUT/$mossFilename)
-		results="$dirName,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]},${timestamps[3]}"
+		results="$repoName,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]},${timestamps[3]}"
 		echo $results >> $outputFile
 		echo "Results Processed"
 
@@ -296,7 +296,7 @@ run_double() {
 			# Process Results
 			echo "Processing Results"
 			stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pC $TOOL_OUTPUT/$chlorineFilename -pI $TOOL_OUTPUT/$iodineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename)
-			results="$dir1,$dir2,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]},${timestamps[3]}"
+			results="$repo1,$repo2,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]},${timestamps[3]}"
 			echo $results >> $outputFile
 			echo "Results Processed"
 
