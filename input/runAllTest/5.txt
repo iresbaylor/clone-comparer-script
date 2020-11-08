@@ -1,0 +1,5 @@
+https://github.com/8igDaddy/reddit-Tree-Parser
+https://github.com/potesuch/music_bot
+https://github.com/liamwu/face_detection
+https://github.com/sherly7Veronica/TOI
+https://github.com/D00mSlayer/django-material-poll

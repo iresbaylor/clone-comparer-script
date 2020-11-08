@@ -1,0 +1,5 @@
+https://github.com/fabric8-analytics/fabric8-analytics-firehose-fetcher
+https://github.com/fabric8-analytics/victims-cve-db
+https://github.com/fabric8-analytics/machine-ui
+https://github.com/fabric8-analytics/api-machine-stacks
+https://github.com/fabric8-analytics/fabric8-analytics-tags

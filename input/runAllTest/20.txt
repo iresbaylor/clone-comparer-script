@@ -1,0 +1,5 @@
+https://github.com/bivossa/dash_table_highlight
+https://github.com/neyvis/adycaresite
+https://github.com/pottersinternationalcollege/coursebuilder
+https://github.com/chrisgilmerproj/MeetUps
+https://github.com/iresbaylor/codeDuplicationParser

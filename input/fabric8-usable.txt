@@ -1,0 +1,12 @@
+https://github.com/fabric8-analytics/fabric8-analytics-common
+https://github.com/fabric8-analytics/fabric8-analytics-worker
+https://github.com/fabric8-analytics/fabric8-analytics-server
+https://github.com/fabric8-analytics/fabric8-analytics-data-model
+https://github.com/fabric8-analytics/fabric8-analytics-recommender
+https://github.com/fabric8-analytics/fabric8-analytics-jobs
+https://github.com/fabric8-analytics/fabric8-analytics-license-check
+https://github.com/fabric8-analytics/brewutils
+https://github.com/fabric8-analytics/fabric8-analytics-stack-analysis
+https://github.com/fabric8-analytics/fabric8-analytics-tagger
+https://github.com/fabric8-analytics/fabric8-analytics-firehose-fetcher
+https://github.com/fabric8-analytics/fabric8-analytics-license-analysis

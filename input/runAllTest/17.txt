@@ -1,0 +1,5 @@
+https://github.com/draganoiu/Must_DO_app
+https://github.com/Magzhan123/TabysKTS
+https://github.com/MarcTomasek/deep-learning-ss18
+https://github.com/jlevers/sublime-text-3-settings
+https://github.com/lbud/run_sf

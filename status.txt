@@ -1,0 +1,257 @@
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+Cloning into 'soe-ci'...
+Cloning into 'rhsmTools'...
+Cloning into 'role-satellite6-server'...
+Cloning into 'satellite61_summit_lab_2015'...
+Cloning into 'sat6Inventory'...
+Cloning into 'satellite-sanity'...
+Cloning into 'satellite-cert-pprint'...
+Cloning into 'katello-attach-subscription'...
+Cloning into 'puppet-summit-2016'...
+Cloning into 'pulp-planner'...
+Cloning into 'katello-publish-cvs'...
+Cloning into 'satellite6-fips-client'...
+Cloning into 'katello-cvmanager'...
+Cloning into 'RedHatSatellite.github.io'...
+Cloning into 'example-scripts'...
+Cloning into 'ballista'...
+Cloning into 'satellite-host-cve'...
+Cloning into 'pumsu'...
+Cloning into 'katello-cleanup'...
+Cloning into 'sat6_scripts'...
+Cloning into 'makeCDNListingFiles'...
+Cloning into 'satellite-clone'...
+Cloning into 'sat6CompareHostPackages'...
+Cloning into 'acme-soe'...
+Cloning into 'satellite-demo'...
+Cloning into 'satellite-hooks'...
+Cloning into 'sat6-currency'...
+Cloning into 'sat6-rex-patching'...
+Cloning into 'capsule-maintain'...
+[[94m[1m*[m] 0.5430536270141602 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.014625787734985352 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/soe-ci"
+[[94m[1m*[m] 0.5292575359344482 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.01223444938659668 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/soe-ci"
+[[94m[1m*[m] 0.5121815204620361 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.48981380462646484 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5091578960418701 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.03226447105407715 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/role-satellite6-server"
+[[94m[1m*[m] 0.4789555072784424 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.033982038497924805 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/role-satellite6-server"
+[[94m[1m*[m] 0.49831104278564453 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.034461021423339844 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/satellite61_summit_lab_2015"
+[[94m[1m*[m] 0.5050268173217773 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.034932613372802734 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/satellite61_summit_lab_2015"
+[[94m[1m*[m] 0.5470941066741943 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.4874253273010254 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.4882490634918213 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5323610305786133 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5197405815124512 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5141010284423828 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.4959571361541748 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.016346216201782227 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/katello-attach-subscription"
+[[94m[1m*[m] 0.5457460880279541 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.01427912712097168 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/katello-attach-subscription"
+[[94m[1m*[m] 0.5004069805145264 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.04935503005981445 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/puppet-summit-2016"
+[[94m[1m*[m] 0.49764585494995117 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.04912996292114258 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/puppet-summit-2016"
+[[94m[1m*[m] 0.4970359802246094 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.030924558639526367 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/pulp-planner"
+[[94m[1m*[m] 0.5140583515167236 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.031146764755249023 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/pulp-planner"
+[[94m[1m*[m] 0.5020434856414795 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5190048217773438 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.4912557601928711 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.02097296714782715 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/satellite6-fips-client"
+[[94m[1m*[m] 0.5144517421722412 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.02074885368347168 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/satellite6-fips-client"
+[[94m[1m*[m] 0.5090944766998291 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.008605003356933594 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/katello-cvmanager"
+[[94m[1m*[m] 0.5176830291748047 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.009533405303955078 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/katello-cvmanager"
+[[94m[1m*[m] 0.5002861022949219 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.03131866455078125 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/RedHatSatellite.github.io"
+[[94m[1m*[m] 0.47494077682495117 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.028807640075683594 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/RedHatSatellite.github.io"
+[[94m[1m*[m] 0.5178234577178955 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.011081933975219727 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/example-scripts"
+[[94m[1m*[m] 0.4760923385620117 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.011755943298339844 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/example-scripts"
+[[94m[1m*[m] 0.5005600452423096 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.4983682632446289 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5299749374389648 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.49100518226623535 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5490274429321289 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.03241467475891113 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/pumsu"
+[[94m[1m*[m] 0.4931018352508545 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.02929973602294922 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/pumsu"
+[[94m[1m*[m] 0.5065231323242188 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.018924474716186523 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/katello-cleanup"
+[[94m[1m*[m] 0.5301694869995117 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.019020557403564453 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/katello-cleanup"
+[[94m[1m*[m] 0.562474250793457 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5162007808685303 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5275516510009766 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.4979557991027832 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5547513961791992 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.7005887031555176 seconds - First repository modules parsed
+[[94m[1m*[m] Running a single-repository analysis...
+[[94m[1m*[m] 0.04371476173400879 seconds - Analysis completed
+[[94m[1m*[m] 0.5207710266113281 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.6967413425445557 seconds - First repository modules parsed
+[[94m[1m*[m] Running a single-repository analysis...
+[[94m[1m*[m] 0.000743865966796875 seconds - Function started
+[[94m[1m*[m] 0.00026345252990722656 seconds - Module lists optimized
+[[94m[1m*[m] 0.08236265182495117 seconds - End of function
+[[94m[1m*[m] 0.00042891502380371094 seconds - Analysis completed
+
+NiCad Clone Detector v6.1 (11.7.20)
+
+config=./config/default.cfg
+system=../../repos/satellite-clone
+threshold=0.30
+granularity=blocks
+language=py
+transform=none
+rename=blind
+filter=none
+abstract=none
+normalize=none
+cluster=yes
+report=yes
+include=
+exclude=
+
+Sat Nov  7 18:10:16 CST 2020
+
+Extracting blocks from py files in ../../repos/satellite-clone
+
+Extracted 73 blocks
+
+Applying blind renaming to extracted blocks from py files in ../../repos/satellite-clone
+
+Finding clones between 10 and 2500 lines at UPI threshold 0.30
+
+Found 0 clone pairs
+
+Clustering clone pairs into classes
+
+Clustered clone pairs into 0 classes
+
+Getting original sources for clones
+
+Making HTML reports
+
+Done.
+
+Detailed log in ../../repos/satellite-clone_blocks-clones-2020-11-07-18:10:16.log
+Results in ../../repos/satellite-clone_blocks-blind-clones/
+Report in ../../repos/satellite-clone_blocks-blind-clones/satellite-clone_blocks-blind-clones-0.30-classes-withsource.html
+
+Sat Nov  7 18:10:16 CST 2020
+
+
+NiCad Clone Detector v6.1 (11.7.20)
+
+config=./config/default.cfg
+system=../../repos/satellite-clone
+threshold=0.30
+granularity=functions
+language=py
+transform=none
+rename=blind
+filter=none
+abstract=none
+normalize=none
+cluster=yes
+report=yes
+include=
+exclude=
+
+Sat Nov  7 18:10:17 CST 2020
+
+Extracting functions from py files in ../../repos/satellite-clone
+
+Extracted 31 functions
+
+Applying blind renaming to extracted functions from py files in ../../repos/satellite-clone
+
+Finding clones between 10 and 2500 lines at UPI threshold 0.30
+
+Found 0 clone pairs
+
+Clustering clone pairs into classes
+
+Clustered clone pairs into 0 classes
+
+Getting original sources for clones
+
+Making HTML reports
+
+Done.
+
+Detailed log in ../../repos/satellite-clone_functions-clones-2020-11-07-18:10:17.log
+Results in ../../repos/satellite-clone_functions-blind-clones/
+Report in ../../repos/satellite-clone_functions-blind-clones/satellite-clone_functions-blind-clones-0.30-classes-withsource.html
+
+Sat Nov  7 18:10:17 CST 2020
+
+Flattening repository
+Sending to Moss
+Processing Results
+Results Processed
+[[94m[1m*[m] 0.4997711181640625 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.49184751510620117 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.49763989448547363 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.034299612045288086 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/acme-soe"
+[[94m[1m*[m] 0.48923707008361816 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.033957719802856445 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/acme-soe"
+[[94m[1m*[m] 0.5226912498474121 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.48577213287353516 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.49553942680358887 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5097064971923828 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.4950141906738281 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5276792049407959 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.5011065006256104 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.4922516345977783 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.47904133796691895 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.013553619384765625 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/capsule-maintain"
+[[94m[1m*[m] 0.4935612678527832 seconds - Arguments handled; Repositories parsed
+[[94m[1m*[m] 0.013736248016357422 seconds - First repository modules parsed
+[[97m[101mERROR[m] First repository is empty: "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/repos/github.com/RedHatSatellite/capsule-maintain"
