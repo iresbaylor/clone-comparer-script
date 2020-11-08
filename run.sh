@@ -56,7 +56,7 @@ run_single() {
 		end_time=$(date +%s.%6N)
 		if [ $? -ne 0 ]
 		then
-			echo "PyClone (Oxygen) - unable to process" >> $outputFile
+			echo "$repoName,PyClone (Oxygen) - unable to process" >> $outputFile
 			((i=i+1))
 			cd ../..
 			continue
@@ -77,7 +77,7 @@ run_single() {
 		end_time=$(date +%s.%6N)
 		if [ $exit_code -ne 0 ]
 		then
-			echo "PyClone (Chlorine) - unable to process" >> $outputFile
+			echo "$repoName,PyClone (Chlorine) - unable to process" >> $outputFile
 			((i=i+1))
 			cd ../..
 			continue
@@ -103,7 +103,7 @@ run_single() {
 		end_time=$(date +%s.%6N)
 		if [[ $exit_code -ne 0 ]]
 		then
-			echo "NiCad Blocks - unable to process" >> $outputFile
+			echo "$repoName,NiCad Blocks - unable to process" >> $outputFile
 			((i=i+1))
 			cd ../..
 			continue
@@ -120,7 +120,7 @@ run_single() {
 		end_time=$(date +%s.%6N)
 		if [[ $? -ne 0 ]] 
 		then
-			echo "NiCad Functions - unable to process" >> $outputFile
+			echo "$repoName,NiCad Functions - unable to process" >> $outputFile
 			((i=i+1))
 			cd ../..
 			continue
@@ -215,7 +215,7 @@ run_double() {
 			end_time=$(date +%s.%6N)
 			if [ $exit_code -ne 0 ]
 			then
-				echo "PyClone (Chlorine) - unable to process" >> $outputFile
+				echo "$repoName,PyClone (Chlorine) - unable to process" >> $outputFile
 				((j=j+1))
 				cd ../..
 				continue
@@ -236,7 +236,7 @@ run_double() {
 			end_time=$(date +%s.%6N)
 			if [ $exit_code -ne 0 ]
 			then
-				echo "PyClone (Iodine) - unable to process" >> $outputFile
+				echo "$repoName,PyClone (Iodine) - unable to process" >> $outputFile
 				((j=j+1))
 				cd ../..
 				continue
@@ -262,7 +262,7 @@ run_double() {
 			end_time=$(date +%s.%6N)
 			if [ $exit_code -ne 0 ]
 			then
-				echo "NiCad Blocks - unable to process" >> $outputFile
+				echo "$repoName,NiCad Blocks - unable to process" >> $outputFile
 				((j=j+1))
 				cd ../..
 				continue
@@ -280,7 +280,7 @@ run_double() {
 			end_time=$(date +%s.%6N)
 			if [ $exit_code -ne 0 ]
 			then
-				echo "NiCad Functions - unable to process" >> $outputFile
+				echo "$repoName,NiCad Functions - unable to process" >> $outputFile
 				((j=j+1))
 				cd ../..
 				continue
