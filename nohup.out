@@ -1,0 +1,541 @@
+Single - Test 1
+OXYGEN_MIN_NODE_WEIGHT=15
+CHLORINE_MIN_NODE_WEIGHT=15
+CHLORINE_MIN_MATCH_COEFFICIENT=0.75
+
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+Cloning into 'fabric8-analytics-tagger'...
+Cloning into 'fabric8-analytics-firehose-fetcher'...
+Cloning into 'fabric8-analytics-license-analysis'...
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+mv: cannot stat ‘*.json’: No such file or directory
+cp: cannot stat ‘oxygen.json’: No such file or directory
+rm: cannot remove ‘oxygen.json’: No such file or directory
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+mv: cannot stat ‘*.json’: No such file or directory
+cp: cannot stat ‘oxygen.json’: No such file or directory
+rm: cannot remove ‘oxygen.json’: No such file or directory
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+mv: cannot stat ‘*.json’: No such file or directory
+cp: cannot stat ‘oxygen.json’: No such file or directory
+rm: cannot remove ‘oxygen.json’: No such file or directory
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+Single - Test 2
+OXYGEN_MIN_NODE_WEIGHT=15
+CHLORINE_MIN_NODE_WEIGHT=15
+CHLORINE_MIN_MATCH_COEFFICIENT=0.8
+
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+Cloning into 'fabric8-analytics-tagger'...
+Cloning into 'fabric8-analytics-firehose-fetcher'...
+Cloning into 'fabric8-analytics-license-analysis'...
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+mv: cannot stat ‘*.json’: No such file or directory
+cp: cannot stat ‘oxygen.json’: No such file or directory
+rm: cannot remove ‘oxygen.json’: No such file or directory
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+mv: cannot stat ‘*.json’: No such file or directory
+cp: cannot stat ‘oxygen.json’: No such file or directory
+rm: cannot remove ‘oxygen.json’: No such file or directory
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+mv: cannot stat ‘*.json’: No such file or directory
+cp: cannot stat ‘oxygen.json’: No such file or directory
+rm: cannot remove ‘oxygen.json’: No such file or directory
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+Single - Test 3
+OXYGEN_MIN_NODE_WEIGHT=15
+CHLORINE_MIN_NODE_WEIGHT=15
+CHLORINE_MIN_MATCH_COEFFICIENT=0.85
+
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+Cloning into 'fabric8-analytics-tagger'...
+Cloning into 'fabric8-analytics-firehose-fetcher'...
+Cloning into 'fabric8-analytics-license-analysis'...
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+mv: cannot stat ‘*.json’: No such file or directory
+cp: cannot stat ‘oxygen.json’: No such file or directory
+rm: cannot remove ‘oxygen.json’: No such file or directory
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+mv: cannot stat ‘*.json’: No such file or directory
+cp: cannot stat ‘oxygen.json’: No such file or directory
+rm: cannot remove ‘oxygen.json’: No such file or directory
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+mv: cannot stat ‘*.json’: No such file or directory
+cp: cannot stat ‘oxygen.json’: No such file or directory
+rm: cannot remove ‘oxygen.json’: No such file or directory
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+Single - Test 4
+OXYGEN_MIN_NODE_WEIGHT=15
+CHLORINE_MIN_NODE_WEIGHT=15
+CHLORINE_MIN_MATCH_COEFFICIENT=0.9
+
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+Cloning into 'fabric8-analytics-tagger'...
+Cloning into 'fabric8-analytics-firehose-fetcher'...
+Cloning into 'fabric8-analytics-license-analysis'...
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+mv: cannot stat ‘*.json’: No such file or directory
+cp: cannot stat ‘oxygen.json’: No such file or directory
+rm: cannot remove ‘oxygen.json’: No such file or directory
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+mv: cannot stat ‘*.json’: No such file or directory
+cp: cannot stat ‘oxygen.json’: No such file or directory
+rm: cannot remove ‘oxygen.json’: No such file or directory
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+mv: cannot stat ‘*.json’: No such file or directory
+cp: cannot stat ‘oxygen.json’: No such file or directory
+rm: cannot remove ‘oxygen.json’: No such file or directory
+Traceback (most recent call last):
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 196, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/__main__.py", line 7, in <module>
+    from cli.app import main
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/cli/app.py", line 7, in <module>
+    from engine.algorithms.algorithm_runner import run_single_repo, run_two_repos
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/algorithm_runner.py", line 5, in <module>
+    from .iodine.iodine import iodine
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/iodine.py", line 3, in <module>
+    from .pattern_collection import pattern_collection
+  File "/home/woodd/clone-comparer-script/tools/codeDuplicationParser/engine/algorithms/iodine/pattern_collection.py", line 7, in <module>
+    _MIN_NODES = int(os.environ["IODINE_MIN_NODES"]) or 20
+  File "/home/woodd/pypy3.7-v7.3.2-linux64/lib-python/3/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'IODINE_MIN_NODES'
+Single - Test 5
+OXYGEN_MIN_NODE_WEIGHT=15
+CHLORINE_MIN_NODE_WEIGHT=15
+CHLORINE_MIN_MATCH_COEFFICIENT=0.95
+
