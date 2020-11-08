@@ -360,8 +360,11 @@ tempFiles[5]=moss.txt
 num=0
 while read line
 do
-	repositories[num]=$line
-	((num=num+1))
+	if [ ! -z $line ]
+	then
+		repositories[num]=$line
+		((num=num+1))
+	fi
 done < $repository_file
 
 # Iterate over the repositories
