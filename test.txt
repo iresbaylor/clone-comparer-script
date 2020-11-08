@@ -1,8 +1,0 @@
-https://github.com/fabric8-analytics/fabric8-analytics-notification-scheduler
-https://github.com/fabric8-analytics/fabric8-analytics-release-monitor
-https://github.com/fabric8-analytics/fabric8-analytics-recommender
-https://github.com/fabric8-analytics/fabric8-analytics-auth
-https://github.com/fabric8-analytics/fabric8-analytics-bigquery-manifests-job
-https://github.com/fabric8-analytics/mercator-go
-https://github.com/fabric8-analytics/nvdlib
-https://github.com/fabric8-analytics/fabric8-analytics-dependency-editor
