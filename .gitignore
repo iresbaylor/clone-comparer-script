@@ -5,3 +5,4 @@ tools/NiCad/
 tools/Moss/moss
 *.csv
 .idea/
+nohup.out
