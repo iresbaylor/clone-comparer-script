@@ -1,5 +1,0 @@
-https://github.com/fabric8-analytics/f8a-3scale-connect-api
-https://github.com/fabric8-analytics/fabric8-analytics-notification-scheduler
-https://github.com/fabric8-analytics/fabric8-analytics-release-monitor
-https://github.com/fabric8-analytics/fabric8-analytics-recommender
-https://github.com/fabric8-analytics/fabric8-analytics-auth

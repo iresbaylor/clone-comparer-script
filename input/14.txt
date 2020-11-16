@@ -1,5 +1,0 @@
-https://github.com/PriyankaBangale/PythonCode
-https://github.com/dodiws/isdc_geodb
-https://github.com/eduOSS/configuration_files
-https://github.com/BlokStricke/server
-https://github.com/jmchan2010/my-first-blog

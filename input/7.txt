@@ -1,5 +1,0 @@
-https://github.com/bge1234/cbc
-https://github.com/Kassmanben/Weighty-Tomes
-https://github.com/ugoproto/webpy_project
-https://github.com/userfuy/gdata-samples
-https://github.com/cioban/netPi

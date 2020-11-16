@@ -1,5 +1,0 @@
-https://github.com/fabric8-analytics/fabric8-analytics-worker
-https://github.com/fabric8-analytics/cvedb
-https://github.com/fabric8-analytics/fabric8-analytics-stack-report-ui
-https://github.com/fabric8-analytics/fabric8-analytics-stack-analysis
-https://github.com/fabric8-analytics/fabric8-analytics-license-analysis

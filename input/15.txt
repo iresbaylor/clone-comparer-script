@@ -1,5 +1,0 @@
-https://github.com/Coding101-dot/Work_manager
-https://github.com/rizwanzaheer/PyShop
-https://github.com/wolfiptv/DYDSTREAM
-https://github.com/erikshestopal/CarND-Behavioral-Cloning-P3
-https://github.com/akowalz/yelp_ml
