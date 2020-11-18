@@ -34,7 +34,7 @@ sudo apt-get install libpq-dev
 
 9. Build the project by navigating to tools/clone-comparer and running:
 ```
-mvn clean install
+mvn clean verify
 ```
 
 ## Running the project
