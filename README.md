@@ -32,6 +32,11 @@ sudo apt-get install libpq-dev
 
 8. Install [Maven](https://maven.apache.org/download.cgi) and [Java 15](https://jdk.java.net/15/) to run the comparer tool. Make sure both executables are in your path.
 
+9. Build the project by navigating to tools/clone-comparer and running:
+```
+mvn clean install
+```
+
 ## Running the project
 
 1. Assemble a list of URLs for GitHub repositories you want to compare. Drop them in a file (see repositories.txt for an example).

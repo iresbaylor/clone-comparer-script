@@ -335,15 +335,15 @@ fi
 OUTPUT="$(pwd)/output"
 TOOL_OUTPUT="$(pwd)/toolOutput"
 
-# Build the Maven project
-cd tools/clone-comparer
-mvn clean verify -q
-if [ $? -ne 0 ]
-then
-	exit $?
-fi
+# Uncommend to Build the Maven project
+# cd tools/clone-comparer
+# mvn clean verify -q
+# if [ $? -ne 0 ]
+# then
+# 	exit $?
+# fi
 
-cd ../..
+# cd ../..
 declare -a repositories
 
 # Declare output files
