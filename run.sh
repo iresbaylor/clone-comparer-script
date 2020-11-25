@@ -188,125 +188,122 @@ run_double() {
 		repo1=${repositories[i]}
 		dir1="${repo1##*/}"
 
-		j=$i
-		while [ $j -lt $num ]
-		do
-			repo2=${repositories[j]}
-			dir2="${repo2##*/}"
+		((j=i+1))
+		if [ $j -gt $num ]
+		then
+			# There's an odd number of repositories - skip the last one
+			((i=i+2))
+			continue
+		fi
 
-			if [ $dir1 == $dir2 ]
-			then
-				((j=j+1))
-				continue
-			fi
+		repo2=${repositories[j]}
+		dir2="${repo2##*/}"
 
-			# remove existing output
-			rm -f $TOOL_OUTPUT/*
+		# remove existing output
+		rm -f $TOOL_OUTPUT/*
 
-			# Declare timestamp array & index
-			declare -a timestamps
-			t=0
+		# Declare timestamp array & index
+		declare -a timestamps
+		t=0
 
-			# Process PyClone
-			cd tools/codeDuplicationParser
+		# Process PyClone
+		cd tools/codeDuplicationParser
 
-			# Chlorine
-			start_time=$(date +%s.%6N)
-			$py_bin/pypy3 -m cli -a chlorine $repo1 $repo2
-			exit_code=$?
-			end_time=$(date +%s.%6N)
-			if [ $exit_code -ne 0 ]
-			then
-				echo "$repoName,PyClone (Chlorine) - unable to process" >> $outputFile
-				((j=j+1))
-				cd ../..
-				continue
-			fi
-			timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
-			((t=t+1))
-
-			jsonFiles=(*.json)
-			chlorineFile="${jsonFiles[0]}"
-			mv $chlorineFile $chlorineFilename
-			cp $chlorineFilename $TOOL_OUTPUT
-			rm $chlorineFilename
-
-			# Iodine
-			#start_time=$(date +%s.%6N)
-			#$py_bin/pypy3 -m cli -a iodine $repo1 $repo2
-			#exit_code=$?
-			#end_time=$(date +%s.%6N)
-			#if [ $exit_code -ne 0 ]
-			#then
-			#	echo "$repoName,PyClone (Iodine) - unable to process" >> $outputFile
-			#	((j=j+1))
-			#	cd ../..
-			#	continue
-			#fi
-			#timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
-			#((t=t+1))
-
-			#jsonFiles=(*.json)
-			#iodineFile="${jsonFiles[0]}"
-			#mv $iodineFile $iodineFilename
-			#cp $iodineFilename $TOOL_OUTPUT
-			#rm $iodineFilename
-
-			cd ..
-
-			# Process NiCad
-			cd NiCad
-
-			# Blocks
-			start_time=$(date +%s.%6N)
-			./nicad6cross blocks py ../../repos/$dir1 ../../repos/$dir2
-			exit_code=$?
-			end_time=$(date +%s.%6N)
-			if [ $exit_code -ne 0 ]
-			then
-				echo "$repoName,NiCad Blocks - unable to process" >> $outputFile
-				((j=j+1))
-				cd ../..
-				continue
-			fi
-			timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
-			((t=t+1))
-
-			cp ../../repos/$dir1\_blocks-blind-crossclones/$dir1\_blocks-blind-crossclones-0.30.xml $TOOL_OUTPUT
-			mv $TOOL_OUTPUT/$dir1\_blocks-blind-crossclones-0.30.xml $TOOL_OUTPUT/$nicadBlocksFilename
-
-			# Functions
-			start_time=$(date +%s.%6N)
-			./nicad6cross functions py ../../repos/$dir1 ../../repos/$dir2
-			exit_code=$?
-			end_time=$(date +%s.%6N)
-			if [ $exit_code -ne 0 ]
-			then
-				echo "$repoName,NiCad Functions - unable to process" >> $outputFile
-				((j=j+1))
-				cd ../..
-				continue
-			fi
-			timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
-			((t=t+1))
-
-			cp ../../repos/$dir1\_functions-blind-crossclones/$dir1\_functions-blind-crossclones-0.30.xml $TOOL_OUTPUT
-			mv $TOOL_OUTPUT/$dir1\_functions-blind-crossclones-0.30.xml $TOOL_OUTPUT/$nicadFunctionsFilename
-
-			cd ../..
-
-			# Process Results
-			echo "Processing Results"
-			#stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pC $TOOL_OUTPUT/$chlorineFilename -pI $TOOL_OUTPUT/$iodineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename)
-			stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pC $TOOL_OUTPUT/$chlorineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename)
-			# results="$repo1,$repo2,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]},${timestamps[3]}"
-			results="$repo1,$repo2,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]}"
-			echo $results >> $outputFile
-			echo "Results Processed"
-
+		# Chlorine
+		start_time=$(date +%s.%6N)
+		$py_bin/pypy3 -m cli -a chlorine $repo1 $repo2
+		exit_code=$?
+		end_time=$(date +%s.%6N)
+		if [ $exit_code -ne 0 ]
+		then
+			echo "$repoName,PyClone (Chlorine) - unable to process" >> $outputFile
 			((j=j+1))
-		done
-		((i=i+1))
+			cd ../..
+			continue
+		fi
+		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+		((t=t+1))
+
+		jsonFiles=(*.json)
+		chlorineFile="${jsonFiles[0]}"
+		mv $chlorineFile $chlorineFilename
+		cp $chlorineFilename $TOOL_OUTPUT
+		rm $chlorineFilename
+
+		# Iodine
+		#start_time=$(date +%s.%6N)
+		#$py_bin/pypy3 -m cli -a iodine $repo1 $repo2
+		#exit_code=$?
+		#end_time=$(date +%s.%6N)
+		#if [ $exit_code -ne 0 ]
+		#then
+		#	echo "$repoName,PyClone (Iodine) - unable to process" >> $outputFile
+		#	((j=j+1))
+		#	cd ../..
+		#	continue
+		#fi
+		#timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+		#((t=t+1))
+
+		#jsonFiles=(*.json)
+		#iodineFile="${jsonFiles[0]}"
+		#mv $iodineFile $iodineFilename
+		#cp $iodineFilename $TOOL_OUTPUT
+		#rm $iodineFilename
+
+		cd ..
+
+		# Process NiCad
+		cd NiCad
+
+		# Blocks
+		start_time=$(date +%s.%6N)
+		./nicad6cross blocks py ../../repos/$dir1 ../../repos/$dir2
+		exit_code=$?
+		end_time=$(date +%s.%6N)
+		if [ $exit_code -ne 0 ]
+		then
+			echo "$repoName,NiCad Blocks - unable to process" >> $outputFile
+			((j=j+1))
+			cd ../..
+			continue
+		fi
+		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+		((t=t+1))
+
+		cp ../../repos/$dir1\_blocks-blind-crossclones/$dir1\_blocks-blind-crossclones-0.30.xml $TOOL_OUTPUT
+		mv $TOOL_OUTPUT/$dir1\_blocks-blind-crossclones-0.30.xml $TOOL_OUTPUT/$nicadBlocksFilename
+
+		# Functions
+		start_time=$(date +%s.%6N)
+		./nicad6cross functions py ../../repos/$dir1 ../../repos/$dir2
+		exit_code=$?
+		end_time=$(date +%s.%6N)
+		if [ $exit_code -ne 0 ]
+		then
+			echo "$repoName,NiCad Functions - unable to process" >> $outputFile
+			((j=j+1))
+			cd ../..
+			continue
+		fi
+		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+		((t=t+1))
+
+		cp ../../repos/$dir1\_functions-blind-crossclones/$dir1\_functions-blind-crossclones-0.30.xml $TOOL_OUTPUT
+		mv $TOOL_OUTPUT/$dir1\_functions-blind-crossclones-0.30.xml $TOOL_OUTPUT/$nicadFunctionsFilename
+
+		cd ../..
+
+		# Process Results
+		echo "Processing Results"
+		#stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pC $TOOL_OUTPUT/$chlorineFilename -pI $TOOL_OUTPUT/$iodineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename)
+		stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pC $TOOL_OUTPUT/$chlorineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename)
+		# results="$repo1,$repo2,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]},${timestamps[3]}"
+		results="$repo1,$repo2,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]}"
+		echo $results >> $outputFile
+		echo "Results Processed"
+
+		((i=i+2))
 	done
 }
 
