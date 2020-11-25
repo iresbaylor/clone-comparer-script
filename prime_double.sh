@@ -6,8 +6,6 @@ then
         exit 1
 fi
 
-
-oxygen_min_node_weights=(15 20 25 30 35)
 chlorine_min_node_weights=(15 20 25 30 35)
 chlorine_min_match_coefficient=(0.75 0.8 0.85 0.9 0.95)
 iodine_min_nodes=(15 20 25 30 35)
@@ -29,12 +27,11 @@ do
         export IODINE_MAX_HOLES=${iodine_max_holes[j]}
         export IODINE_HOLE_MASS_LIMIT=${iodine_hole_mass_limits[(((i+j)%5))]}
 
-	echo "Double - Test $((i * 5 + j + 1))"
-        echo "CHLORINE_MIN_NODE_WEIGHT=$CHLORINE_MIN_NODE_WEIGHT"
-        echo "CHLORINE_MIN_MATCH_COEFFICIENT=$CHLORINE_MIN_MATCH_COEFFICIENT"
-	echo "IODINE_MIN_NODES=$IODINE_MIN_NODES"
-	echo "IODINE_MAX_HOLES=$IODINE_MAX_HOLES"
-	echo "IODINE_HOLE_MASS_LIMIT=$IODINE_HOLE_MASS_LIMIT"
+	testNum=$((i * 5 + j + 1))
+	fileName=output/"$testNum".test
+	echo "Double - Test $testNum" | tee -a $fileName
+        echo "Parameters,,CHLORINE_MIN_NODE_WEIGHT,CHLORINE_MIN_MATCH_COEFFICIENT,IODINE_MIN_NODES,IODINE_MAX_HOLES,IODINE_HOLE_MASS_LIMIT" | tee -a $fileName
+	echo ",,$CHLORINE_MIN_NODE_WEIGHT,$CHLORINE_MIN_MATCH_COEFFICIENT,$IODINE_MIN_NODES,$IODINE_MAX_HOLES,$IODINE_HOLE_MASS_LIMIT" | tee -a $fileName
         echo ""
 
         ./run.sh double $repoFile

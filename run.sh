@@ -176,8 +176,10 @@ run_double() {
 	nicadFunctionsFilename="${tempFiles[4]}"
 	mossFilename="${tempFiles[5]}"
 
-	header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M h pC pI nB nF)
-	headerLine="Results,$header,CHLORINE Time,IODINE Time,NICAD_BLOCKS Time,NICAD_FUNCTIONS Time"
+	# header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M h pC pI nB nF)
+	# headerLine="Results,$header,CHLORINE Time,IODINE Time,NICAD_BLOCKS Time,NICAD_FUNCTIONS Time"
+	header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M h pC nB nF)
+        headerLine="Results,$header,CHLORINE Time,NICAD_BLOCKS Time,NICAD_FUNCTIONS Time"
 	echo $headerLine > $outputFile
 	
 	i=0
@@ -230,25 +232,25 @@ run_double() {
 			rm $chlorineFilename
 
 			# Iodine
-			start_time=$(date +%s.%6N)
-			$py_bin/pypy3 -m cli -a iodine $repo1 $repo2
-			exit_code=$?
-			end_time=$(date +%s.%6N)
-			if [ $exit_code -ne 0 ]
-			then
-				echo "$repoName,PyClone (Iodine) - unable to process" >> $outputFile
-				((j=j+1))
-				cd ../..
-				continue
-			fi
-			timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
-			((t=t+1))
+			#start_time=$(date +%s.%6N)
+			#$py_bin/pypy3 -m cli -a iodine $repo1 $repo2
+			#exit_code=$?
+			#end_time=$(date +%s.%6N)
+			#if [ $exit_code -ne 0 ]
+			#then
+			#	echo "$repoName,PyClone (Iodine) - unable to process" >> $outputFile
+			#	((j=j+1))
+			#	cd ../..
+			#	continue
+			#fi
+			#timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+			#((t=t+1))
 
-			jsonFiles=(*.json)
-			iodineFile="${jsonFiles[0]}"
-			mv $iodineFile $iodineFilename
-			cp $iodineFilename $TOOL_OUTPUT
-			rm $iodineFilename
+			#jsonFiles=(*.json)
+			#iodineFile="${jsonFiles[0]}"
+			#mv $iodineFile $iodineFilename
+			#cp $iodineFilename $TOOL_OUTPUT
+			#rm $iodineFilename
 
 			cd ..
 
@@ -295,8 +297,10 @@ run_double() {
 
 			# Process Results
 			echo "Processing Results"
-			stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pC $TOOL_OUTPUT/$chlorineFilename -pI $TOOL_OUTPUT/$iodineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename)
-			results="$repo1,$repo2,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]},${timestamps[3]}"
+			#stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pC $TOOL_OUTPUT/$chlorineFilename -pI $TOOL_OUTPUT/$iodineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename)
+			stats=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M d -pC $TOOL_OUTPUT/$chlorineFilename -nB $TOOL_OUTPUT/$nicadBlocksFilename -nF $TOOL_OUTPUT/$nicadFunctionsFilename)
+			# results="$repo1,$repo2,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]},${timestamps[3]}"
+			results="$repo1,$repo2,$stats,${timestamps[0]},${timestamps[1]},${timestamps[2]}"
 			echo $results >> $outputFile
 			echo "Results Processed"
 
