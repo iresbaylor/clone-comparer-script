@@ -307,28 +307,50 @@ run_double() {
 	done
 }
 
+print_usage() {
+	echo "Usage: ./run.sh [-hk] -m <mode> -f <repository URL file>"
+}
+
+print_full_usage() {
+	echo "Usage: ./run.sh [-hk] -m <mode> -f <repository URL file>"
+	echo "Options:"
+	echo "	-f <file>: file containing repositories to scan (required)"
+	echo "	-h: print this help"
+	echo "	-k: keep temporary files when the analysis finishes"
+	echo "	-m <mode>: mode in which to run comparison (required, must be single or double)"
+}
+
 ###
 # Begin main script
 
-if [ "$1" == '' ] || [ "$1" == 'help' ]
-then
-	echo "Usage: <mode (single/double)> <repository URL file>"
-	exit 0
-fi
+while getopts 'f:hkm:' flag
+do
+	case "${flag}" in
+		f) repository_file=${OPTARG} ;;
+		h) print_full_usage
+			exit 0;;
+		k) keep=true ;;
+		m) mode=${OPTARG} ;;
+		*) print_usage
+			exit 1;;
+	esac
+done
 
-# Handle arguments
-if [ $# -ne 2 ]
+if [ $# == 0 ]
 then
-	echo "Usage: <mode (single/double)> <repository URL file>"
+	print_usage
 	exit 1
 fi
 
-mode=$1
-repository_file=$2
+if [ -z "$repository_file" ]
+then
+	echo "Must supply a file containing repositories to check (-f)"
+	exit 3
+fi
 
 if [ "$mode" != "single" ] && [ "$mode" != "double" ]
 then
-	echo "Mode must be single or double"
+	echo "Mode (-m) must be single or double"
 	exit 2
 fi
 
@@ -401,4 +423,7 @@ else
 fi
 
 # Clean up flattened repositories
-rm -rf ./repos
+if ! $keep
+then
+	rm -rf ./repos
+fi

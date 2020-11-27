@@ -9,7 +9,7 @@ To run this script, you'll need to do the following:
 1. Clone the repository with the submodules. This will install both Cyclone and the comparer tool.
 
 ```
-git clone --recurse-submodules https://github.com/iresbaylor/clone-comparer.git
+git clone --recurse-submodules https://github.com/iresbaylor/clone-comparer-script.git
 ```
 
 2. Install [TxL](https://www.txl.ca/txl-index.html). You'll need to do it as the superuser or NiCad won't be able to build correctly.
@@ -20,7 +20,7 @@ git clone --recurse-submodules https://github.com/iresbaylor/clone-comparer.git
 
 5. As instructed in the Moss documentation, retrieve a user ID and update the $userId parameter in the moss script.
 
-6. Install [PyPy](https://www.pypy.org/) for Python 3. Make sure the pypy executable is in your path.
+6. Install [PyPy](https://www.pypy.org/) for Python 3. Make sure the pypy3 executable is in your path.
 
 7. Run init.sh to create the Python virtual environment.
 
@@ -47,10 +47,10 @@ mvn clean verify
 source tools/codeDuplicationParser/venv/bin/activate
 ```
 
-3. Run the comparer: 
+3. Run the comparer. Use -h to understand the required arguments.
 
 ```
-./run.sh <mode (single/double) <repository_file>
+./run.sh [-hk] -m <mode> (single/double) -f <repository_file>
 ```
 
 4. The results will be under output-single-\<timestamp\>.csv or output-double-\<timestamp\>.csv, depending on which mode you ran.
