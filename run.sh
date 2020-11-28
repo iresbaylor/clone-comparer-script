@@ -307,9 +307,6 @@ run_double() {
 	done
 }
 
-print_usage() {
-	echo "Usage: ./run.sh [-hk] -m <mode> -f <repository URL file>"
-}
 
 print_full_usage() {
 	echo "Usage: ./run.sh [-hk] -m <mode> -f <repository URL file>"

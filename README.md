@@ -47,10 +47,16 @@ mvn clean verify
 source tools/codeDuplicationParser/venv/bin/activate
 ```
 
-3. Run the comparer. Use -h to understand the required arguments.
+3. Source the environment variables to get the parameters:
+
+```
+source .env
+```
+
+4. Run the comparer. Use -h to understand the required arguments.
 
 ```
 ./run.sh [-hk] -m <mode> (single/double) -f <repository_file>
 ```
 
-4. The results will be under output-single-\<timestamp\>.csv or output-double-\<timestamp\>.csv, depending on which mode you ran.
+5. The results will be under output-single-\<timestamp\>.csv or output-double-\<timestamp\>.csv, depending on which mode you ran.
