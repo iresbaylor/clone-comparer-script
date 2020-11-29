@@ -24,10 +24,17 @@ git clone --recurse-submodules https://github.com/iresbaylor/clone-comparer-scri
 
 7. Run init.sh to create the Python virtual environment.
 
-You may get an error when installing psycopg2 about needing to install a PostgreSQL package. You'll need to find the appropriate package for your operating system. On Ubuntu, run:
+You may get an error when installing psycopg2 about needing to install a PostgreSQL package. Do the following to fix it:
 
 ```
+# Mac OSX - set the LDFLAGS environment variable
+export LDFLAGS=$(pg_config --ldflags)
+
+# Ubuntu - install PostgreSQL development libraries
 sudo apt-get install libpq-dev
+
+# RHEL - install PostgreSQL development libraries
+sudo yum install postgresql-devel
 ```
 
 8. Install [Maven](https://maven.apache.org/download.cgi) and [Java 15](https://jdk.java.net/15/) to run the comparer tool. Make sure both executables are in your path.
