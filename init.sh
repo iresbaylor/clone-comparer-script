@@ -1,8 +1,10 @@
 #!/bin/bash
 
-cd tools/codeDuplicationParser
 pypy3 -m venv venv
 source venv/bin/activate
+cd tools/codeDuplicationParser
+pip3 install -r requirements.txt
+cd ../PycloneTestBankCreator
 pip3 install -r requirements.txt
 cd ../..
 
