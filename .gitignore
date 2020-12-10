@@ -6,3 +6,4 @@ tools/Moss/moss
 *.csv
 .idea/
 nohup.out
+venv/

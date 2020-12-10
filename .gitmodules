@@ -4,3 +4,6 @@
 [submodule "tools/codeDuplicationParser"]
 	path = tools/codeDuplicationParser
 	url = https://github.com/iresbaylor/codeDuplicationParser
+[submodule "tools/PycloneTestBankCreator"]
+	path = tools/PycloneTestBankCreator
+	url = https://github.com/iresbaylor/PycloneTestBankCreator

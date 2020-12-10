@@ -61,7 +61,7 @@ run_single() {
 			cd ../..
 			continue
 		fi
-		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+		timestamps[t]=$($py_bin/pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
 		((t=t+1))
 
 		jsonFiles=(*.json)
@@ -82,7 +82,7 @@ run_single() {
 			cd ../..
 			continue
 		fi
-		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+		timestamps[t]=$($py_bin/pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
 		((t=t+1))
 
 		jsonFiles=(*.json)
@@ -110,7 +110,7 @@ run_single() {
 		fi
 		cp ../../repos/$dirName\_blocks-blind-clones/$dirName\_blocks-blind-clones-0.30.xml $TOOL_OUTPUT
 		mv $TOOL_OUTPUT/$dirName\_blocks-blind-clones-0.30.xml $TOOL_OUTPUT/$nicadBlocksFilename
-		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+		timestamps[t]=$($py_bin/pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
 		((t=t+1))
 
 		# Functions
@@ -127,7 +127,7 @@ run_single() {
 		fi
 		cp ../../repos/$dirName\_functions-blind-clones/$dirName\_functions-blind-clones-0.30.xml $TOOL_OUTPUT
 		mv $TOOL_OUTPUT/$dirName\_functions-blind-clones-0.30.xml $TOOL_OUTPUT/$nicadFunctionsFilename
-		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+		timestamps[t]=$($py_bin/pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
 		((t=t+1))
 
 		cd ..
@@ -242,7 +242,7 @@ run_double() {
 		#	cd ../..
 		#	continue
 		#fi
-		#timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+		#timestamps[t]=$($py_bin/pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
 		#((t=t+1))
 
 		#jsonFiles=(*.json)
@@ -268,7 +268,7 @@ run_double() {
 			cd ../..
 			continue
 		fi
-		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+		timestamps[t]=$($py_bin/pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
 		((t=t+1))
 
 		cp ../../repos/$dir1\_blocks-blind-crossclones/$dir1\_blocks-blind-crossclones-0.30.xml $TOOL_OUTPUT
@@ -286,7 +286,7 @@ run_double() {
 			cd ../..
 			continue
 		fi
-		timestamps[t]=$(pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
+		timestamps[t]=$($py_bin/pypy3 -c "print(\"%.6f\" % (${end_time} - ${start_time}))")
 		((t=t+1))
 
 		cp ../../repos/$dir1\_functions-blind-crossclones/$dir1\_functions-blind-crossclones-0.30.xml $TOOL_OUTPUT
@@ -307,20 +307,147 @@ run_double() {
 	done
 }
 
+###
+# run_pyclone()
+#
+# Description: Runs the Pyclone tool pulling from a set of repositories
+# Arguments:
+#	repositories - the array of repositories to use
+#
+
+run_pyclone() {
+	repositories=$1
+	outputFile=$2
+	tempFiles=$3
+
+	# Get temp files
+	chlorineFilename="${tempFiles[1]}"
+	iodineFilename="${tempFiles[2]}"
+
+	# Print header file
+	header=$(java -jar tools/clone-comparer/target/clone-comparer-1.0-SNAPSHOT.jar -M h -c pC pI)
+  headerLine="Results,$header"
+	echo $headerLine > $outputFile
+
+	# Find does not natively put files into an array, so we use a loop
+	# See https://stackoverflow.com/questions/23356779/how-can-i-store-the-find-command-results-as-an-array-in-bash
+	pyfiles=()
+	while IFS=  read -r -d $'\0'
+	do
+		pyfiles+=("$REPLY")
+	done < <(find $base_path/repos -name "*.py" -print0)
+	pyfilenum="${#pyfiles[@]}"
+
+	cd tools/PycloneTestBankCreator
+
+	# Remove existing clones
+	rm -f type1clones/*
+
+	i=0
+	while [ $i -lt $pyfilenum ]
+	do
+		filename=$(basename "${pyfiles[i]}")
+		cp "${pyfiles[i]}" $filename
+		$py_bin/pypy3 creator.py $filename
+
+		# Initialize local "repos"
+		repo1="${pyfiles[i]}.d"
+		repo2="${pyfiles[i]}-clone.py.d"
+		mkdir -p "$repo1"
+		mkdir -p "$repo2"
+
+		mv $filename $repo1
+		mv type1clones/*.py $repo2/$filename-clone.py
+
+		cd ../codeDuplicationParser
+
+		# Chlorine
+		$py_bin/pypy3 -m cli -a chlorine $repo1 $repo2
+		if [ $? -ne 0 ]
+		then
+			echo "$repoName,PyClone (Chlorine) - unable to process" >> $outputFile
+			((i=i+1))
+			cd ../PycloneTestBankCreator
+			rm $repo1/*.py
+			rm $repo2/*.py
+			continue
+		fi
+
+		jsonFiles=(*.json)
+		chlorineFile="${jsonFiles[0]}"
+		mv $chlorineFile $chlorineFilename
+		cp $chlorineFilename $TOOL_OUTPUT
+		rm $chlorineFilename
+
+		# Iodine
+		$py_bin/pypy3 -m cli -a iodine $repo1 $repo2
+		if [ $? -ne 0 ]
+		then
+			echo "$repoName,PyClone (Iodine) - unable to process" >> $outputFile
+			((i=i+1))
+			cd ../PycloneTestBankCreator
+			rm $repo1/*.py
+			rm $repo2/*.py
+			continue
+		fi
+
+		jsonFiles=(*.json)
+		iodineFile="${jsonFiles[0]}"
+		mv $iodineFile $iodineFilename
+		cp $iodineFilename $TOOL_OUTPUT
+		rm $iodineFilename
+
+		# Process Results
+		cd ../clone-comparer
+		echo "Processing Results"
+		stats=$(java -jar target/clone-comparer-1.0-SNAPSHOT.jar -M d -c -pC $TOOL_OUTPUT/$chlorineFilename -pI $TOOL_OUTPUT/$iodineFilename)
+		results="$repo1,$repo2,$stats"
+		echo $results >> $outputFile
+		echo "Results Processed"
+
+		cd ../PycloneTestBankCreator
+		rm -r $repo1
+		rm -r $repo2
+		rm -f type1clones/*
+
+		((i=i+1))
+	done
+
+	cd ../..
+}
+
+###
+# print_usage()
+#
+# Description: Prints a quick help message describing how to use the
+#					script
+#
+
+print_usage() {
+	echo "Usage: ./run.sh [-hkp] [-m <mode>] -f <repository URL file>"
+}
+
+###
+# print_full_usage()
+#
+# Description: Prints a full help message describing each argument
+#					of the function and its usage
+#
 
 print_full_usage() {
-	echo "Usage: ./run.sh [-hk] -m <mode> -f <repository URL file>"
+	print_usage
 	echo "Options:"
 	echo "	-f <file>: file containing repositories to scan (required)"
 	echo "	-h: print this help"
 	echo "	-k: keep temporary files when the analysis finishes"
-	echo "	-m <mode>: mode in which to run comparison (required, must be single or double)"
+	echo "	-m <mode>: mode in which to run comparison (required if -p is not set, must be single or double)"
+	echo "	-p: use the Pyclone tool to generate clones and run comparison"
 }
 
 ###
 # Begin main script
 
-while getopts 'f:hkm:' flag
+while getopts 'f:hkm:p' flag
 do
 	case "${flag}" in
 		f) repository_file=${OPTARG} ;;
@@ -328,6 +455,7 @@ do
 			exit 0;;
 		k) keep=true ;;
 		m) mode=${OPTARG} ;;
+		p) pyclone=true ;;
 		*) print_usage
 			exit 1;;
 	esac
@@ -345,17 +473,21 @@ then
 	exit 3
 fi
 
-if [ "$mode" != "single" ] && [ "$mode" != "double" ]
+if [ ! -z "$mode" ]
 then
-	echo "Mode (-m) must be single or double"
-	exit 2
+	if [ "$mode" != "single" ] && [ "$mode" != "double" ]
+	then
+		echo "Mode (-m) must be single or double"
+		exit 2
+	fi
 fi
 
 source ./.env
 
 # Set output directories
-OUTPUT="$(pwd)/output"
-TOOL_OUTPUT="$(pwd)/toolOutput"
+base_path="$(pwd)"
+OUTPUT="$base_path/output"
+TOOL_OUTPUT="$base_path/toolOutput"
 
 # Uncommend to Build the Maven project
 # cd tools/clone-comparer
@@ -370,6 +502,9 @@ declare -a repositories
 
 # Declare output files
 outputFile=$OUTPUT/output-$mode-`date +%s`.csv
+pycloneOutputFile=$OUTPUT/output-pyclone-`date +%s`.csv
+
+# Declare temporary Cyclone output files
 declare -a tempFiles
 tempFiles[0]=oxygen.json
 tempFiles[1]=chlorine.json
@@ -403,26 +538,37 @@ cd ..
 # Clear out any existing JSON files in PyClone
 rm -f tools/codeDuplicationParser/*.json
 
-virtualenv=venv
-py_bin="$(pwd)/tools/codeDuplicationParser/$virtualenv/bin"
+py_bin="$(pwd)/venv/bin"
 
 # Activate Python virtual environment
-source tools/codeDuplicationParser/$virtualenv/bin/activate
+source "$py_bin/activate"
 
 # Create output directories
 mkdir -p $OUTPUT
 mkdir -p $TOOL_OUTPUT
 
 # Run the clone tools
-if [ $mode == 'single' ]
+if [ ! -z "$mode" ]
 then
-	run_single $repositories $outputFile $tempFiles
-else
-	run_double $repositories $outputFile $tempFiles
+	if [ $mode == 'single' ]
+	then
+		run_single $repositories $outputFile $tempFiles
+	elif [ $mode == 'double' ]
+	then
+		run_double $repositories $outputFile $tempFiles
+	fi
+fi
+
+# Run Pyclone
+if [ $pyclone ] && [ -z "$mode" ]
+then
+	run_pyclone $repositories $pycloneOutputFile $tempFiles
 fi
 
 # Clean up flattened repositories
 if ! $keep
 then
 	rm -rf ./repos
+else
+	echo "Repositories kept per flag given"
 fi
