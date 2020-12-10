@@ -351,6 +351,8 @@ then
 	exit 2
 fi
 
+source ./.env
+
 # Set output directories
 OUTPUT="$(pwd)/output"
 TOOL_OUTPUT="$(pwd)/toolOutput"

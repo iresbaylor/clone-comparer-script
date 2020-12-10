@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Concats output of priming experiments together for comparison
+
 if [ $# -ne 1 ]
 then
 	echo "usage: concat.sh <target directory>"
