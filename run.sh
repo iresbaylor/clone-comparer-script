@@ -567,4 +567,6 @@ fi
 if ! $keep
 then
 	rm -rf ./repos
+else
+	echo "Repositories kept per flag given"
 fi

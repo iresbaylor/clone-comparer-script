@@ -6,4 +6,4 @@
 	url = https://github.com/iresbaylor/codeDuplicationParser
 [submodule "tools/PycloneTestBankCreator"]
 	path = tools/PycloneTestBankCreator
-	url = https://github.com/calebdehaan/PycloneTestBankCreator
+	url = https://github.com/iresbaylor/PycloneTestBankCreator
